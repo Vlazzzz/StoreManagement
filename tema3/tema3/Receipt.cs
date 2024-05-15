@@ -12,5 +12,6 @@ namespace tema3
         public string UserId { get; set; }
         public string IssueDate { get; set; }
         public string AmountReceived { get; set; }
+        public bool IsActive { get; set; }
     }
 }

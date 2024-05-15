@@ -13,5 +13,6 @@ namespace tema3
         public string Quantity { get; set; }
         public string Unit { get; set; }
         public string SubTotal { get; set; }
+        public bool IsActive { get; set; }
     }
 }

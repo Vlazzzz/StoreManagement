@@ -15,5 +15,6 @@ namespace tema3
         public string SupplyDate { get; set; }
         public string ExpiryDate { get; set; }
         public string PurchasePrice { get; set; }
+        public bool IsActive { get; set; }
     }
 }

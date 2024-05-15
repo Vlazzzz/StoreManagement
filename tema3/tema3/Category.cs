@@ -10,6 +10,6 @@ namespace tema3
     {
         public string CategoryId { get; set; }
         public string Name { get; set; }
-        public string Image { get; set; }
+        public bool IsActive { get; set; }
     }
 }
