@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tema3
+namespace tema3.Models
 {
-    internal class Category
+    public class Producer
     {
-        public string CategoryId { get; set; }
+        public string ProducerId { get; set; }
         public string Name { get; set; }
+        public string OriginCountry { get; set; }
         public bool IsActive { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }

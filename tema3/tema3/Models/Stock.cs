@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tema3
+namespace tema3.Models
 {
-    internal class Stock
+    public class Stock
     {
         public string StockId { get; set; }
         public string ProductId { get; set; }
@@ -16,5 +16,6 @@ namespace tema3
         public string ExpiryDate { get; set; }
         public string PurchasePrice { get; set; }
         public bool IsActive { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
