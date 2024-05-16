@@ -9,10 +9,10 @@ namespace tema3.Models.Entities
 {
     public class Receipt
     {
-        public string ReceiptId { get; set; }
-        public string UserId { get; set; }
-        public string IssueDate { get; set; }
-        public string AmountReceived { get; set; }
+        public int ReceiptId { get; set; }
+        public int UserId { get; set; }
+        public DateTime IssueDate { get; set; }
+        public Decimal AmountReceived { get; set; }
         public bool IsActive { get; set; }
         public virtual User User { get; set; }
         public virtual List<ReceiptProducts> ReceiptProducts { get; set; }

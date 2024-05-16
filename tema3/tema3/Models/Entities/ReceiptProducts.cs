@@ -10,11 +10,11 @@ namespace tema3.Models.Entities
     [PrimaryKey("ReceiptId", "ProductId")]
     public class ReceiptProducts
     {
-        public string ReceiptId { get; set; }
-        public string ProductId { get; set; }
-        public string Quantity { get; set; }
-        public string Unit { get; set; }
-        public string SubTotal { get; set; }
+        public int ReceiptId { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+        public int Unit { get; set; }
+        public string Subtotal { get; set; }
         public bool IsActive { get; set; }
         public virtual Product Product { get; set; }
         public virtual Receipt Receipt { get; set; }
