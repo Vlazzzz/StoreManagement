@@ -27,10 +27,10 @@ namespace tema3.Models.DataAccessLayer
                 {
                     Receipt receipt = new Receipt
                     {
-                        ReceiptId = reader["ReceiptId"].ToString(),
-                        UserId = reader["UserId"].ToString(),
-                        IssueDate = reader["IssueDate"].ToString(),
-                        AmountReceived = reader["AmountReceived"].ToString(),
+                        ReceiptId = (int)reader["ReceiptId"],
+                        UserId = (int)reader["UserId"],
+                        IssueDate = (DateTime)reader["IssueDate"],
+                        AmountReceived = (int)reader["AmountReceived"],
                         IsActive = (bool)reader["IsActive"]
                     };
                     receipts.Add(receipt);

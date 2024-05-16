@@ -27,11 +27,11 @@ namespace tema3.Models.DataAccessLayer
                 {
                     Product product = new Product
                     {
-                        ProductId = reader["ProductId"].ToString(),
+                        ProductId = (int)reader["ProductId"],
                         Name = reader["Name"].ToString(),
                         Barcode = reader["Barcode"].ToString(),
-                        CategoryId = reader["CategoryId"].ToString(),
-                        ProducerId = reader["ProducerId"].ToString(),
+                        CategoryId = (int)reader["CategoryId"],
+                        ProducerId = (int)reader["ProducerId"],
                         IsActive = (bool)reader["IsActive"]
                     };
                     products.Add(product);

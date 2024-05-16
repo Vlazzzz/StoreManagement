@@ -28,7 +28,7 @@ namespace tema3.Models.DataAccessLayer
                 {
                     Producer producer = new Producer
                     {
-                        ProducerId = (string)reader["ProducerId"],
+                        ProducerId = (int)reader["ProducerId"],
                         Name = reader["Name"].ToString(),
                         OriginCountry = reader["OriginCountry"].ToString(),
                         IsActive = (bool)reader["IsActive"]

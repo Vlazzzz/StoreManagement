@@ -30,7 +30,7 @@ namespace tema3.Models.DataAccessLayer
                         UserId = (int)reader["UserId"],
                         Username = reader["Username"].ToString(),
                         Password = reader["Password"].ToString(),
-                        UserType = Convert.ToInt32(reader["UserType"]),
+                        UserType = (bool)(reader["UserType"]),
                         IsActive = (bool)reader["IsActive"]
                     };
                     users.Add(user);

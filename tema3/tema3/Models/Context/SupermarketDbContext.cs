@@ -20,7 +20,7 @@ namespace tema3.Models.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=Vlazz;Database=Supermarket;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True");
         }
     }
 }

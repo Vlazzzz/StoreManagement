@@ -27,13 +27,13 @@ namespace tema3.Models.DataAccessLayer
                 {
                     Stock stock = new Stock
                     {
-                        StockId = (string)reader["StockId"],
-                        ProductId = reader["ProductId"].ToString(),
-                        Quantity = Convert.ToInt32(reader["Quantity"]),
-                        Unit = Convert.ToInt32(reader["Unit"]),
-                        SupplyDate = Convert.ToDateTime(reader["SupplyDate"]),
-                        ExpiryDate = Convert.ToDateTime(reader["ExpiryDate"]),
-                        PurchasePrice = Convert.ToDecimal(reader["PurchasePrice"]),
+                        StockId = (int)reader["StockId"],
+                        ProductId = (int)reader["ProductId"],
+                        Quantity = (int)(reader["Quantity"]),
+                        Unit = (string)(reader["Unit"]),
+                        SupplyDate = (DateTime)(reader["SupplyDate"]),
+                        ExpiryDate = (DateTime)(reader["ExpiryDate"]),
+                        PurchasePrice = (decimal)(reader["PurchasePrice"]),
                         IsActive = (bool)reader["IsActive"]
                     };
                     stocks.Add(stock);

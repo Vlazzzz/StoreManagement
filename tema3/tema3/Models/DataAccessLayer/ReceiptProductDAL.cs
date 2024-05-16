@@ -27,11 +27,11 @@ namespace tema3.Models.DataAccessLayer
                 {
                     ReceiptProducts receiptProduct = new ReceiptProducts
                     {
-                        ReceiptId = reader["ReceiptId"].ToString(),
-                        ProductId = reader["ProductId"].ToString(),
-                        Quantity = reader["Quantity"].ToString(),
-                        Unit = reader["Unit"].ToString(),
-                        SubTotal = reader["SubTotal"].ToString(),
+                        ReceiptId = (int)reader["ReceiptId"],
+                        ProductId = (int)reader["ProductId"],
+                        Quantity = (int)reader["Quantity"],
+                        Unit = (string)reader["Unit"],
+                        Subtotal = (decimal)reader["Subtotal"],
                         IsActive = (bool)reader["IsActive"]
                     };
                     receiptProducts.Add(receiptProduct);
@@ -54,7 +54,7 @@ namespace tema3.Models.DataAccessLayer
                 command.Parameters.AddWithValue("@ProductId", productId);
                 command.Parameters.AddWithValue("@Quantity", quantity);
                 command.Parameters.AddWithValue("@Unit", unit);
-                command.Parameters.AddWithValue("@SubTotal", subTotal);
+                command.Parameters.AddWithValue("@Subtotal", subTotal);
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -72,7 +72,7 @@ namespace tema3.Models.DataAccessLayer
                 command.Parameters.AddWithValue("@ProductId", productId);
                 command.Parameters.AddWithValue("@Quantity", quantity);
                 command.Parameters.AddWithValue("@Unit", unit);
-                command.Parameters.AddWithValue("@SubTotal", subTotal);
+                command.Parameters.AddWithValue("@Subtotal", subTotal);
 
                 connection.Open();
                 command.ExecuteNonQuery();

@@ -28,7 +28,7 @@ namespace tema3.Models.DataAccessLayer
                 {
                     Category category = new Category
                     {
-                        CategoryId = (string)reader["CategoryId"],
+                        CategoryId = (int)reader["CategoryId"],
                         Name = reader["Name"].ToString(),
                         IsActive = (bool)reader["IsActive"]
                     };

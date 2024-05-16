@@ -11,7 +11,7 @@ namespace tema3.Models.Entities
         public int StockId { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
-        public int Unit { get; set; }
+        public string Unit { get; set; }
         public DateTime SupplyDate { get; set; }
         public DateTime ExpiryDate { get; set; }
         public Decimal PurchasePrice { get; set; }
