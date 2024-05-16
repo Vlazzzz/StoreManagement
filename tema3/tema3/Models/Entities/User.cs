@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tema3.Models
+namespace tema3.Models.Entities
 {
     public class User
     {

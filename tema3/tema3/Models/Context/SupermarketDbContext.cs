@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using tema3.Models.Entities;
 
 namespace tema3.Models.Context
 {

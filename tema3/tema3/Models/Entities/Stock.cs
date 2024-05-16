@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
-namespace tema3.Models
+namespace tema3.Models.Entities
 {
-    [PrimaryKey("ReceiptId", "ProductId")]
-    public class ReceiptProducts
+    public class Stock
     {
-        public string ReceiptId { get; set; }
+        public string StockId { get; set; }
         public string ProductId { get; set; }
         public string Quantity { get; set; }
         public string Unit { get; set; }
-        public string SubTotal { get; set; }
+        public string SupplyDate { get; set; }
+        public string ExpiryDate { get; set; }
+        public string PurchasePrice { get; set; }
         public bool IsActive { get; set; }
         public virtual Product Product { get; set; }
-        public virtual Receipt Receipt { get; set; }
     }
 }
