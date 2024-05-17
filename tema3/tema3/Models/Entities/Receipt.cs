@@ -15,6 +15,6 @@ namespace tema3.Models.Entities
         public Decimal AmountReceived { get; set; }
         public bool IsActive { get; set; }
         public virtual User User { get; set; }
-        public virtual List<ReceiptProducts> ReceiptProducts { get; set; }
+        public virtual List<ReceiptProduct> ReceiptProducts { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace tema3.Models.Entities
 {
     [PrimaryKey("ReceiptId", "ProductId")]
-    public class ReceiptProducts
+    public class ReceiptProduct
     {
         public int ReceiptId { get; set; }
         public int ProductId { get; set; }

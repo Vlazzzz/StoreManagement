@@ -8,7 +8,7 @@ namespace tema3.Models.DataAccessLayer
 {
     internal class ReceiptDAL
     {
-        private string connectionString = "Server=Vlazz;Database=Supermarket;Trusted_Connection=True;";
+        private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
         public List<Receipt> GetAllReceipts()
         {
@@ -58,7 +58,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void UpdateReceipt(string receiptId, int userId, DateTime issueDate, decimal amountReceived)
+        public void UpdateReceipt(int receiptId, int userId, DateTime issueDate, decimal amountReceived)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -75,7 +75,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void DeleteReceipt(string receiptId)
+        public void DeleteReceipt(int receiptId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

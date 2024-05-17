@@ -8,11 +8,11 @@ namespace tema3.Models.DataAccessLayer
 {
     internal class ReceiptProductDAL
     {
-        private string connectionString = "Server=Vlazz;Database=Supermarket;Trusted_Connection=True;";
+        private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
-        public List<ReceiptProducts> GetAllReceiptProducts()
+        public List<ReceiptProduct> GetAllReceiptProducts()
         {
-            List<ReceiptProducts> receiptProducts = new List<ReceiptProducts>();
+            List<ReceiptProduct> receiptProducts = new List<ReceiptProduct>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -25,7 +25,7 @@ namespace tema3.Models.DataAccessLayer
 
                 while (reader.Read())
                 {
-                    ReceiptProducts receiptProduct = new ReceiptProducts
+                    ReceiptProduct receiptProduct = new ReceiptProduct
                     {
                         ReceiptId = (int)reader["ReceiptId"],
                         ProductId = (int)reader["ProductId"],
@@ -43,7 +43,7 @@ namespace tema3.Models.DataAccessLayer
             return receiptProducts;
         }
 
-        public void InsertReceiptProduct(string receiptId, string productId, int quantity, int unit, decimal subTotal)
+        public void InsertReceiptProduct(int receiptId, int productId, int quantity, string unit, decimal subTotal)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -61,7 +61,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void UpdateReceiptProduct(string receiptId, string productId, int quantity, int unit, decimal subTotal)
+        public void UpdateReceiptProduct(int receiptId, int productId, int quantity, string unit, decimal subTotal)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -79,7 +79,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void DeleteReceiptProduct(string receiptId, string productId)
+        public void DeleteReceiptProduct(int receiptId, int productId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

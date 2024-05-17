@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using tema3.Models.Entities;
 
@@ -15,7 +16,7 @@ namespace tema3.Models.Context
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
-        public DbSet<ReceiptProducts> ReceiptProducts { get; set; }
+        public DbSet<ReceiptProduct> ReceiptProducts { get; set; }
         public DbSet<Stock> Stocks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

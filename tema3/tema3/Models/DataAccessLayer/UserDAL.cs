@@ -8,7 +8,7 @@ namespace tema3.Models.DataAccessLayer
 {
     internal class UserDAL
     {
-        private string connectionString = "Server=Vlazz;Database=Supermarket;Trusted_Connection=True;";
+        private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
         public List<User> GetAllUsers()
         {
@@ -42,7 +42,7 @@ namespace tema3.Models.DataAccessLayer
             return users;
         }
 
-        public void InsertUser(string username, string password, int userType)
+        public void InsertUser(string username, string password, bool userType)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -58,7 +58,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void UpdateUser(int userId, string username, string password, int userType)
+        public void UpdateUser(int userId, string username, string password, bool userType)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

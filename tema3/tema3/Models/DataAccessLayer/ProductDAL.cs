@@ -8,7 +8,7 @@ namespace tema3.Models.DataAccessLayer
 {
     internal class ProductDAL
     {
-        private string connectionString = "Server=Vlazz;Database=Supermarket;Trusted_Connection=True;";
+        private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
         public List<Product> GetAllProducts()
         {

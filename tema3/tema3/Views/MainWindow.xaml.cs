@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using tema3.Models.DataAccessLayer;
 
 namespace tema3
 {
@@ -19,6 +20,14 @@ namespace tema3
         public MainWindow()
         {
             InitializeComponent();
+
+            CategoryDAL categoryDAL = new CategoryDAL();
+            ProducerDAL producerDAL = new ProducerDAL();
+            UserDAL userDAL = new UserDAL();
+            StockDAL stockDAL = new StockDAL();
+            ProductDAL productDAL = new ProductDAL();
+            ReceiptDAL receiptDAL = new ReceiptDAL();
+            ReceiptProductDAL receiptProductDAL = new ReceiptProductDAL();
         }
     }
 }

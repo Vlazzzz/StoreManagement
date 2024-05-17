@@ -8,7 +8,7 @@ namespace tema3.Models.DataAccessLayer
 {
     internal class StockDAL
     {
-        private string connectionString = "Server=Vlazz;Database=Supermarket;Trusted_Connection=True;";
+        private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
         public List<Stock> GetAllStocks()
         {
@@ -45,7 +45,7 @@ namespace tema3.Models.DataAccessLayer
             return stocks;
         }
 
-        public void InsertStock(string productId, int quantity, int unit, DateTime supplyDate, DateTime expiryDate, decimal purchasePrice)
+        public void InsertStock(int productId, int quantity, string unit, DateTime supplyDate, DateTime expiryDate, decimal purchasePrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -64,7 +64,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void UpdateStock(int stockId, string productId, int quantity, int unit, DateTime supplyDate, DateTime expiryDate, decimal purchasePrice)
+        public void UpdateStock(int stockId, int productId, int quantity, string unit, DateTime supplyDate, DateTime expiryDate, decimal purchasePrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
