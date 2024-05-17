@@ -8,19 +8,31 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       Title="LoginPage"
-      Background="White">
+      Background="MintCream">
     <Page.DataContext>
         <viewModels:LoginViewModel/>
     </Page.DataContext>
 
     <Grid>
-        <TextBlock Text="Login" FontSize="50" FontFamily="Bahnschrift" FontWeight="Bold" Margin="173,28,173,203" RenderTransformOrigin="0.5,0.5" />
-         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
-            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Margin="0,10" Background="Aqua"/>
-            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Margin="0,10" Background="Aqua"/>
-            <Button Height="21" Width="64" 
-                    Command="{Binding LoginCommand}"
-                    CommandParameter="{Binding RelativeSource = {RelativeSource AncestorType={x:Type Page}}}"/>
+        <TextBlock Text="Supermarket" FontFamily="Bahnschrift SemiBold Condensed" FontSize="60" Margin="115,10,95,288"/>
+        <TextBlock Text="Manager" FontFamily="Bahnschrift SemiBold Condensed" FontSize="60" Margin="160,73,123,265"/>
+        <Image Source ="../Resources/supermarket.png" Margin="8,162,203,30"></Image>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Margin="214,190,0,0">
+            <TextBlock Text="&#x9;         Username" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20"/>
+            <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Background="White" Width="126"/>
+            <TextBlock Text="&#x9;          Password" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Margin="0,0, 0, 0" Background="White" Width="128" RenderTransformOrigin="0.286,0.325"/>
+            <Button Background="Transparent" Height="88" Width="176" RenderTransformOrigin="-0.491,1.544"
+                Command="{Binding LoginCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}">
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                            <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="33" Text="Login" Margin="6,0,6,0" Height="35"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>

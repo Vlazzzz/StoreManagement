@@ -9,9 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\BusinessLogicLayer\" />
+    <None Remove="Resources\360_F_222600825_DkhL7EBcmcFg5cOWMZVsTEMeBX2KJrnM-removebg-preview.png" />
+    <None Remove="Resources\supermarket.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +28,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\360_F_222600825_DkhL7EBcmcFg5cOWMZVsTEMeBX2KJrnM-removebg-preview.png" />
+    <Resource Include="Resources\supermarket.png" />
   </ItemGroup>
 
 </Project>

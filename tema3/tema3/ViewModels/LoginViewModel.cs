@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Supermarket.ViewModels.Commands;
+using tema3.Models.BusinessLogicLayer;
 using tema3.Models.DataAccessLayer;
 
 namespace tema3.ViewModels
@@ -51,14 +52,14 @@ namespace tema3.ViewModels
         private void Login(object t)
         {
             var currPage = t as Page;
-            UserDAL userDAL = new UserDAL();
+            UserBLL userBLL = new UserBLL();
 
             if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
             {
-                if (userDAL.CheckUserCredentials(Username, Password))
+                if (userBLL.CheckUserCredentials(Username, Password))
                 {
                     bool isAdmin;
-                    if (userDAL.CheckUserType(Username, Password, out isAdmin))
+                    if (userBLL.CheckUserType(Username, Password, out isAdmin))
                     {
                         // Navigate to the admin page if the user is an admin
                         if (isAdmin)
@@ -84,8 +85,5 @@ namespace tema3.ViewModels
                 MessageBox.Show("Please enter both username and password");
             }
         }
-
-
-
     }
 }
