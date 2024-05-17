@@ -20,14 +20,21 @@ namespace tema3
         public MainWindow()
         {
             InitializeComponent();
-
-            CategoryDAL categoryDAL = new CategoryDAL();
-            ProducerDAL producerDAL = new ProducerDAL();
-            UserDAL userDAL = new UserDAL();
-            StockDAL stockDAL = new StockDAL();
-            ProductDAL productDAL = new ProductDAL();
-            ReceiptDAL receiptDAL = new ReceiptDAL();
-            ReceiptProductDAL receiptProductDAL = new ReceiptProductDAL();
         }
+
+        //private void Login_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainFrame.Navigate(new LoginPage());
+        //}
+
+        //private void Cashier_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainFrame.Navigate(new CashierPage());
+        //}
+
+        //private void Admin_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainFrame.Navigate(new AdminPage());
+        //}
     }
 }

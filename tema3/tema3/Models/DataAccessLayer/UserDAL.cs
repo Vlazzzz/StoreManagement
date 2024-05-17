@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows;
 using tema3.Models.Entities;
 
 namespace tema3.Models.DataAccessLayer
@@ -88,5 +89,68 @@ namespace tema3.Models.DataAccessLayer
                 command.ExecuteNonQuery();
             }
         }
+
+        public bool CheckUserCredentials(string username, string password)
+        {
+            int userCount = 0;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spCheckUserCredentials", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    SqlParameter userCountParam = new SqlParameter("@UserCount", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(userCountParam);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    userCount = (int)userCountParam.Value;
+
+                    return userCount > 0;
+                }
+            }
+        }
+
+        public bool CheckUserType(string username, string password, out bool isAdmin)
+        {
+            isAdmin = false;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("spCheckUserType", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
+
+                    SqlParameter isAdminParam = new SqlParameter("@IsAdmin", SqlDbType.Bit)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(isAdminParam);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    isAdmin = (bool)isAdminParam.Value;
+                    conn.Close();
+
+                    return true; // Procedura stocată a fost executată cu succes
+                }
+            }
+        }
+
+
+
+
+
+
     }
 }
