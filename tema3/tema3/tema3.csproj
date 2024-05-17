@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\360_F_222600825_DkhL7EBcmcFg5cOWMZVsTEMeBX2KJrnM-removebg-preview.png" />
     <None Remove="Resources\supermarket.png" />
   </ItemGroup>
 
@@ -31,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\360_F_222600825_DkhL7EBcmcFg5cOWMZVsTEMeBX2KJrnM-removebg-preview.png" />
     <Resource Include="Resources\supermarket.png" />
   </ItemGroup>
 

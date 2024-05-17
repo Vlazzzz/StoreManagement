@@ -20,6 +20,7 @@ namespace tema3.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        private UserBLL userBLL = new UserBLL();
         private string _username;
         private string _password;
 
@@ -52,7 +53,6 @@ namespace tema3.ViewModels
         private void Login(object t)
         {
             var currPage = t as Page;
-            UserBLL userBLL = new UserBLL();
 
             if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
             {

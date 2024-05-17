@@ -15,6 +15,291 @@
     </Page.DataContext>
 
     <Grid>
-        <TextBlock Text="Admin" FontSize="50" FontFamily="Bahnschrift" FontWeight="Bold" Margin="169,78,169,80" RenderTransformOrigin="0.5,0.5" />
+        <TextBlock Text="Admin" FontSize="50" FontFamily="Bahnschrift" FontWeight="Bold" Margin="169,24,169,134" RenderTransformOrigin="0.5,0.5" />
+        <TabControl Margin="0,108,0,23" HorizontalAlignment="Center" Width="448">
+            <TabItem Header="Users">
+                <StackPanel DockPanel.Dock="Top">
+                    <DataGrid AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Username"/>
+                            <DataGridTextColumn Header="Password"/>
+                            <DataGridTextColumn Header="UserType"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Height="31">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="ADD" Margin="138,137,54,-171" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="ADD" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="36,137,-17,-171" RenderTransformOrigin="0.495,0.531" Grid.Column="2">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="Update" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="138,170,-17,-203" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="DELETE" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Categories">
+                <StackPanel>
+                    <DataGrid AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Height="31">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="ADD" Margin="138,137,54,-171" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="ADD" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="36,137,-17,-171" RenderTransformOrigin="0.495,0.531" Grid.Column="2">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="Update" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="138,170,-17,-203" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="DELETE" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Products">
+                <StackPanel>
+                    <DataGrid AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name"/>
+                            <DataGridTextColumn Header="Barcode"/>
+                            <DataGridTextColumn Header="Category"/>
+                            <DataGridTextColumn Header="Producer"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Height="31">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="ADD" Margin="138,137,54,-171" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="ADD" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="36,137,-17,-171" RenderTransformOrigin="0.495,0.531" Grid.Column="2">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="Update" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="138,170,-17,-203" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="DELETE" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Producers">
+                <StackPanel>
+                    <DataGrid AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name"/>
+                            <DataGridTextColumn Header="OriginCountry"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Height="31">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="ADD" Margin="138,137,54,-171" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="ADD" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="36,137,-17,-171" RenderTransformOrigin="0.495,0.531" Grid.Column="2">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="Update" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="138,170,-17,-203" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="DELETE" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Stocks">
+                <StackPanel>
+                    <DataGrid AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ProductName"/>
+                            <DataGridTextColumn Header="Quantity"/>
+                            <DataGridTextColumn Header="Unit"/>
+                            <DataGridTextColumn Header="SupplyDate"/>
+                            <DataGridTextColumn Header="ExpiryDate"/>
+                            <DataGridTextColumn Header="PurchasePrice"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Height="31">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="ADD" Margin="138,137,54,-171" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="ADD" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="36,137,-17,-171" RenderTransformOrigin="0.495,0.531" Grid.Column="2">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="Update" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="138,170,-17,-203" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="DELETE" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Receipts">
+                <StackPanel>
+                    <DataGrid AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cashier"/>
+                            <DataGridTextColumn Header="IssueDate"/>
+                            <DataGridTextColumn Header="AmountReceived"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Height="31">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Content="ADD" Margin="138,137,54,-171" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="ADD" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="36,137,-17,-171" RenderTransformOrigin="0.495,0.531" Grid.Column="2">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="Update" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Content="ADD" Margin="138,170,-17,-203" RenderTransformOrigin="0.495,0.531" Grid.ColumnSpan="2" Grid.Column="1">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Text="DELETE" Margin="6,0,6,0" Height="27"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>
