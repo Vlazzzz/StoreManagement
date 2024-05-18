@@ -17,5 +17,8 @@ namespace tema3.Models.Entities
         public Decimal PurchasePrice { get; set; }
         public bool IsActive { get; set; }
         public virtual Product Product { get; set; }
+
+        //to bind directly the name of the category and producer to the datagrid in the UI
+        public string ProductName { get; set; }
     }
 }

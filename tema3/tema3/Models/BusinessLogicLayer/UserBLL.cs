@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Windows;
 using tema3.Models.Entities;
@@ -11,7 +12,7 @@ namespace tema3.Models.BusinessLogicLayer
     {
         private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
-        public List<User> GetAllUsers()
+        public ObservableCollection<User> GetAllUsers()
         {
             List<User> users = new List<User>();
 
@@ -40,7 +41,7 @@ namespace tema3.Models.BusinessLogicLayer
                 reader.Close();
             }
 
-            return users;
+            return new ObservableCollection<User>(users);
         }
         public bool CheckUserCredentials(string username, string password)
         {

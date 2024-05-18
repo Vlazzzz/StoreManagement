@@ -10,39 +10,6 @@ namespace tema3.Models.DataAccessLayer
     {
         private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
-        public List<ReceiptProduct> GetAllReceiptProducts()
-        {
-            List<ReceiptProduct> receiptProducts = new List<ReceiptProduct>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand("spProductReceiptSelectAll", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    ReceiptProduct receiptProduct = new ReceiptProduct
-                    {
-                        ReceiptId = (int)reader["ReceiptId"],
-                        ProductId = (int)reader["ProductId"],
-                        Quantity = (int)reader["Quantity"],
-                        Unit = (string)reader["Unit"],
-                        Subtotal = (decimal)reader["Subtotal"],
-                        IsActive = (bool)reader["IsActive"]
-                    };
-                    receiptProducts.Add(receiptProduct);
-                }
-
-                reader.Close();
-            }
-
-            return receiptProducts;
-        }
-
         public void InsertReceiptProduct(int receiptId, int productId, int quantity, string unit, decimal subTotal)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

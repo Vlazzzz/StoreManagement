@@ -12,19 +12,28 @@ namespace tema3.ViewModels
 {
     public class AdminViewModel : BaseViewModel
     {
-        public ObservableCollection<User> Users { get; set; }   
+        public ObservableCollection<tema3.Models.Entities.User> Users { get; set; }   
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Producer> Producers { get; set; }
         public ObservableCollection<Receipt> Receipts { get; set; }
         public ObservableCollection<Stock> Stocks { get; set; }
 
-        UserBLL userBLL = new UserBLL();
-        ProductBLL productBLL = new ProductBLL();
+        private UserBLL userBLL = new UserBLL();
+        private ProductBLL productBLL = new ProductBLL();
+        private CategoryBLL categoryBLL = new CategoryBLL();
+        private ProducerBLL producerBLL = new ProducerBLL();
+        private ReceiptBLL receiptBLL = new ReceiptBLL();
+        private StockBLL stockBLL = new StockBLL();
         
         public AdminViewModel()
         {
-            //Users = userBLL.GetAllUsers(); ??????????????????? 
+            Users = userBLL.GetAllUsers();
+            Products = productBLL.GetAllProducts();
+            Categories = categoryBLL.GetAllCategories();
+            Producers = producerBLL.GetAllProducers();
+            Receipts = receiptBLL.GetAllReceipts();
+            Stocks = stockBLL.GetAllStocks();
         }
     }
 

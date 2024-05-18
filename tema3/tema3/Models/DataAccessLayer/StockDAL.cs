@@ -10,41 +10,6 @@ namespace tema3.Models.DataAccessLayer
     {
         private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
-        public List<Stock> GetAllStocks()
-        {
-            List<Stock> stocks = new List<Stock>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand("spStockSelectAll", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Stock stock = new Stock
-                    {
-                        StockId = (int)reader["StockId"],
-                        ProductId = (int)reader["ProductId"],
-                        Quantity = (int)(reader["Quantity"]),
-                        Unit = (string)(reader["Unit"]),
-                        SupplyDate = (DateTime)(reader["SupplyDate"]),
-                        ExpiryDate = (DateTime)(reader["ExpiryDate"]),
-                        PurchasePrice = (decimal)(reader["PurchasePrice"]),
-                        IsActive = (bool)reader["IsActive"]
-                    };
-                    stocks.Add(stock);
-                }
-
-                reader.Close();
-            }
-
-            return stocks;
-        }
-
         public void InsertStock(int productId, int quantity, string unit, DateTime supplyDate, DateTime expiryDate, decimal purchasePrice)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

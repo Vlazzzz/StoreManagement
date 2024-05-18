@@ -10,38 +10,6 @@ namespace tema3.Models.DataAccessLayer
     internal class ProducerDAL
     {
         private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
-
-        public List<Producer> GetAllProducers()
-        {
-            List<Producer> producers = new List<Producer>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand("spProducerSelectAll", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Producer producer = new Producer
-                    {
-                        ProducerId = (int)reader["ProducerId"],
-                        Name = reader["Name"].ToString(),
-                        OriginCountry = reader["OriginCountry"].ToString(),
-                        IsActive = (bool)reader["IsActive"]
-                    };
-                    producers.Add(producer);
-                }
-
-                reader.Close();
-            }
-
-            return producers;
-        }
-
         public void InsertProducer(string name, string originCountry)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

@@ -6,42 +6,9 @@ using tema3.Models.Entities;
 
 namespace tema3.Models.DataAccessLayer
 {
-    internal class ProductDAL
+    public class ProductDAL
     {
         private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
-
-        public List<Product> GetAllProducts()
-        {
-            List<Product> products = new List<Product>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand("spProductSelectAll", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Product product = new Product
-                    {
-                        ProductId = (int)reader["ProductId"],
-                        Name = reader["Name"].ToString(),
-                        Barcode = reader["Barcode"].ToString(),
-                        CategoryId = (int)reader["CategoryId"],
-                        ProducerId = (int)reader["ProducerId"],
-                        IsActive = (bool)reader["IsActive"]
-                    };
-                    products.Add(product);
-                }
-
-                reader.Close();
-            }
-
-            return products;
-        }
 
         public void InsertProduct(string name, string barcode, int categoryId, int producerId)
         {

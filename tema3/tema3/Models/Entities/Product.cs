@@ -18,5 +18,9 @@ namespace tema3.Models.Entities
         public virtual Producer Producer { get; set; }
         public virtual Category Category { get; set; }
         public virtual List<Stock> Stocks { get; set; }
+
+        //to bind directly the name of the category and producer to the datagrid in the UI
+        public string CategoryName { get; set; }
+        public string ProducerName { get; set; }
     }
 }

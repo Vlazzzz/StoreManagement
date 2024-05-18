@@ -11,36 +11,6 @@ namespace tema3.Models.DataAccessLayer
     {
         private string connectionString = "Server=Vlazz;Database=dbSupermarket2;Trusted_Connection=True;TrustServerCertificate=True";
 
-        public List<Category> GetAllCategories()
-        {
-            List<Category> categories = new List<Category>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand("spCategorySelectAll", connection);
-                command.CommandType = CommandType.StoredProcedure;
-
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Category category = new Category
-                    {
-                        CategoryId = (int)reader["CategoryId"],
-                        Name = reader["Name"].ToString(),
-                        IsActive = (bool)reader["IsActive"]
-                    };
-                    categories.Add(category);
-                }
-
-                reader.Close();
-            }
-
-            return categories;
-        }
-
         public void InsertCategory(string name)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
