@@ -64,7 +64,9 @@
                         </DataGrid>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
-                        <Button Margin="5" Width="138" Height="61">
+                        <Button Command="{Binding AddUserCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="61">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -73,7 +75,9 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="62">
+                        <Button Command="{Binding EditUserCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="62">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">

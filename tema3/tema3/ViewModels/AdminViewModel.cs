@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Supermarket.ViewModels.Commands;
 using tema3.Models.BusinessLogicLayer;
 using tema3.Models.DataAccessLayer;
 using tema3.Models.Entities;
+using tema3.Pages;
 
 namespace tema3.ViewModels
 {
@@ -35,6 +37,8 @@ namespace tema3.ViewModels
         public ICommand DeleteProducerCommand { get; set; }
         public ICommand DeleteReceiptCommand { get; set; }
         public ICommand DeleteStockCommand { get; set; }
+        public ICommand AddUserCommand { get; set; }
+        public ICommand EditUserCommand { get; set; }
 
         private User _selectedUser;
         public User SelectedUser
@@ -123,7 +127,6 @@ namespace tema3.ViewModels
             }
         }
 
-
         public AdminViewModel()
         {
             Users = userBLL.GetAllUsers();
@@ -139,6 +142,27 @@ namespace tema3.ViewModels
             DeleteProductCommand = new RelayCommand(DeleteProduct);
             DeleteReceiptCommand = new RelayCommand(DeleteReceipt);
             DeleteStockCommand = new RelayCommand(DeleteStock);
+
+            AddUserCommand = new RelayCommand<object>(AddUser);
+            EditUserCommand = new RelayCommand<object>(EditUser);
+        }
+
+        private void EditUser(object obj)
+        {
+            if (SelectedUser != null)
+            {
+                var currPage = obj as Page;
+                var editUserPage = new EditUserPage();
+                editUserPage.DataContext = new EditUserViewModel(SelectedUser); // Transmiteți utilizatorul selectat către EditUserViewModel
+                currPage.NavigationService.Navigate(editUserPage);
+            }
+        }
+
+
+        private void AddUser(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new EditUserPage());
         }
 
         private void DeleteStock()

@@ -10,6 +10,7 @@
       Background="#c0a891">
 
     <Grid>
-        
+        <TextBlock Text="Add/Edit Category" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Margin="245,46,199,342" RenderTransformOrigin="0.5,0.5" />
+
     </Grid>
 </Page>
