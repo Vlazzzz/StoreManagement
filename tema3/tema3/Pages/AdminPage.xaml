@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:tema3"
       xmlns:viewModels="clr-namespace:tema3.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="500"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="AdminPage"
       Background="#c0a891">
 
@@ -15,12 +15,12 @@
     </Page.DataContext>
 
     <Grid>
-        <TextBlock Text="Supermarket" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Margin="130,17,116,141" RenderTransformOrigin="0.5,0.5" />
-        <TextBlock Text="Management" FontSize="30" FontFamily="Bahnschrift" FontWeight="Bold" Margin="165,65,141,93" RenderTransformOrigin="0.5,0.5" />
-        <Image Source="../Resources/shop1.png" Margin="393,28,10,334"></Image>
-        <Image Source="../Resources/shop2.png" Margin="20,28,392,348"></Image>
+        <TextBlock Text="Supermarket" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Margin="181,17,65,141" RenderTransformOrigin="0.5,0.5" />
+        <TextBlock Text="Management" FontSize="30" FontFamily="Bahnschrift" FontWeight="Bold" Margin="217,65,89,93" RenderTransformOrigin="0.5,0.5" />
+        <Image Source="../Resources/shop1.png" Margin="379,22,-23,318"></Image>
+        <Image Source="../Resources/shop2.png" Margin="-38,22,386,329"></Image>
 
-        <TabControl Margin="0,132,0,23" HorizontalAlignment="Center" Width="448" BorderBrush="Black" BorderThickness="3">
+        <TabControl Margin="0,132,0,23" HorizontalAlignment="Center" Width="522" BorderBrush="Black" BorderThickness="3">
             <TabControl.Resources>
                 <!-- Style for TabItems -->
                 <Style TargetType="TabItem">
@@ -105,7 +105,8 @@
                         <DataGrid ItemsSource="{Binding Categories}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
-                      CanUserAddRows="False">
+                      CanUserAddRows="False"
+                      SelectedItem ="{Binding SelectedCategory}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             </DataGrid.Columns>
@@ -130,7 +131,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="63">
+                        <Button Command="{Binding DeleteCategoryCommand}" Margin="5" Width="138" Height="63">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -154,7 +155,8 @@
                         <DataGrid ItemsSource="{Binding Products}" 
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
-                      CanUserAddRows="False">
+                      CanUserAddRows="False"
+                      SelectedItem ="{Binding SelectedProduct}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="Barcode" Binding="{Binding Barcode}"/>
@@ -182,7 +184,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="63">
+                        <Button Command="{Binding DeleteProductCommand}" Margin="5" Width="138" Height="63">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -207,7 +209,8 @@
                         <DataGrid ItemsSource="{Binding Producers}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
-                      CanUserAddRows="False">
+                      CanUserAddRows="False"
+                      SelectedItem ="{Binding SelectedProducer}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                                 <DataGridTextColumn Header="OriginCountry" Binding="{Binding OriginCountry}"/>
@@ -233,7 +236,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="63">
+                        <Button Command="{Binding DeleteProducerCommand}" Margin="5" Width="138" Height="63">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -258,7 +261,8 @@
                         <DataGrid ItemsSource="{Binding Stocks}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
-                      CanUserAddRows="False">
+                      CanUserAddRows="False"
+                      SelectedItem ="{Binding SelectedStock}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Product" Binding="{Binding ProductName}"/>
                                 <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
@@ -266,6 +270,7 @@
                                 <DataGridTextColumn Header="SupplyDate" Binding="{Binding SupplyDate, StringFormat='{}{0:yyyy-MM-dd}'}"/>
                                 <DataGridTextColumn Header="ExpiryDate" Binding="{Binding ExpiryDate, StringFormat='{}{0:yyyy-MM-dd}'}"/>
                                 <DataGridTextColumn Header="PurchasePrice" Binding="{Binding PurchasePrice}"/>
+                                <DataGridTextColumn Header="SellingPrice" Binding="{Binding SellingPrice}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
@@ -288,7 +293,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="63">
+                        <Button Command="{Binding DeleteStockCommand}" Margin="5" Width="138" Height="63">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -311,9 +316,11 @@
                     <StackPanel Grid.Row="0">
                         <DataGrid AutoGenerateColumns="False"
                       IsReadOnly="True"
-                      CanUserAddRows="False">
+                      CanUserAddRows="False"
+                      SelectedItem ="{Binding SelectedReceipt}"
+                      ItemsSource="{Binding Receipts}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Cashier" Binding="{Binding Cashier}"/>
+                                <DataGridTextColumn Header="Cashier" Binding="{Binding UserName}"/>
                                 <DataGridTextColumn Header="IssueDate" Binding="{Binding IssueDate, StringFormat='{}{0:yyyy-MM-dd}'}"/>
                                 <DataGridTextColumn Header="AmountReceived" Binding="{Binding AmountReceived}"/>
                             </DataGrid.Columns>
@@ -338,7 +345,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="63">
+                        <Button Command="{Binding DeleteReceiptCommand}" Margin="5" Width="138" Height="63">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">

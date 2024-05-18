@@ -45,7 +45,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void DeleteProduct(string productId)
+        public void DeleteProduct(int productId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

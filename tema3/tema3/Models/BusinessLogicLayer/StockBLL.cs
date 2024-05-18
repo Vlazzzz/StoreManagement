@@ -39,8 +39,8 @@ namespace tema3.Models.BusinessLogicLayer
                         ExpiryDate = (DateTime)(reader["ExpiryDate"]),
                         PurchasePrice = (decimal)(reader["PurchasePrice"]),
                         IsActive = (bool)reader["IsActive"],
-                        // Obtinem numele produsului folosind metoda sincrona
-                        ProductName = GetProductNameById((int)reader["ProductId"])
+                        ProductName = GetProductNameById((int)reader["ProductId"]),
+                        SellingPrice = Math.Round((decimal)(reader["PurchasePrice"]) + (decimal)(reader["PurchasePrice"]) * 0.2m, 2)
                     };
                     stocks.Add(stock);
                 }

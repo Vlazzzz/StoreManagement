@@ -23,8 +23,18 @@ namespace tema3.ViewModels
         private readonly ReceiptBLL receiptBLL = new ReceiptBLL();
         private readonly StockBLL stockBLL = new StockBLL();
         private readonly UserDAL userDAL = new UserDAL();
+        private readonly CategoryDAL categoryDAL = new CategoryDAL();
+        private readonly ProducerDAL producerDAL = new ProducerDAL();
+        private readonly ProductDAL productDAL = new ProductDAL();
+        private readonly ReceiptDAL receiptDAL = new ReceiptDAL();
+        private readonly StockDAL stockDAL = new StockDAL();
 
         public ICommand DeleteUserCommand { get; set; }
+        public ICommand DeleteProductCommand { get; set; }
+        public ICommand DeleteCategoryCommand { get; set; }
+        public ICommand DeleteProducerCommand { get; set; }
+        public ICommand DeleteReceiptCommand { get; set; }
+        public ICommand DeleteStockCommand { get; set; }
 
         private User _selectedUser;
         public User SelectedUser
@@ -40,6 +50,80 @@ namespace tema3.ViewModels
             }
         }
 
+        private Category _selectedCategory;
+
+        public Category SelectedCategory
+        {
+            get { return _selectedCategory; }
+            set
+            {
+                if (_selectedCategory != value)
+                {
+                    _selectedCategory = value;
+                    OnPropertyChanged(nameof(SelectedCategory));
+                }
+            }
+        }
+
+        private Producer _selectedProducer;
+        public Producer SelectedProducer
+        {
+            get { return _selectedProducer; }
+            set
+            {
+                if (_selectedProducer != value)
+                {
+                    _selectedProducer = value;
+                    OnPropertyChanged(nameof(SelectedProducer));
+                }
+            }
+        }
+        
+        private Product _selectedProduct;
+
+        public Product SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set
+            {
+                if (_selectedProduct != value)
+                {
+                    _selectedProduct = value;
+                    OnPropertyChanged(nameof(SelectedProduct));
+                }
+            }
+        }
+
+        private Receipt _selectedReceipt;
+
+        public Receipt SelectedReceipt
+        {
+            get { return _selectedReceipt; }
+            set
+            {
+                if (_selectedReceipt != value)
+                {
+                    _selectedReceipt = value;
+                    OnPropertyChanged(nameof(SelectedReceipt));
+                }
+            }
+        }
+        
+        private Stock _selectedStock;
+        public Stock SelectedStock
+        {
+            get { return _selectedStock; }
+            set
+            {
+                if (_selectedStock != value)
+                {
+                    _selectedStock = value;
+                    OnPropertyChanged(nameof(SelectedStock));
+                }
+            }
+        }
+
+
         public AdminViewModel()
         {
             Users = userBLL.GetAllUsers();
@@ -50,6 +134,60 @@ namespace tema3.ViewModels
             Stocks = stockBLL.GetAllStocks();
 
             DeleteUserCommand = new RelayCommand(DeleteUser);
+            DeleteCategoryCommand = new RelayCommand(DeleteCategory);
+            DeleteProducerCommand = new RelayCommand(DeleteProducer);
+            DeleteProductCommand = new RelayCommand(DeleteProduct);
+            DeleteReceiptCommand = new RelayCommand(DeleteReceipt);
+            DeleteStockCommand = new RelayCommand(DeleteStock);
+        }
+
+        private void DeleteStock()
+        {
+            if (SelectedStock.IsActive)
+            {
+                stockDAL.DeleteStock(SelectedStock.StockId);
+                Stocks = stockBLL.GetAllStocks();
+                OnPropertyChanged(nameof(Stocks));
+            }
+        }
+
+        private void DeleteReceipt()
+        {
+            if (SelectedReceipt.IsActive)
+            {
+                receiptDAL.DeleteReceipt(SelectedReceipt.ReceiptId);
+                Receipts = receiptBLL.GetAllReceipts();
+                OnPropertyChanged(nameof(Receipts));
+            }
+        }
+        private void DeleteProduct()
+        {
+            if (SelectedProduct.IsActive)
+            {
+                productDAL.DeleteProduct(SelectedProduct.ProducerId);
+                Products = productBLL.GetAllProducts();
+                OnPropertyChanged(nameof(Products));
+            }
+        }
+
+        private void DeleteProducer()
+        {
+            if (SelectedProducer.IsActive)
+            {
+                producerDAL.DeleteProducer(SelectedProducer.ProducerId);
+                Producers = producerBLL.GetAllProducers();
+                OnPropertyChanged(nameof(Producers));
+            }
+        }
+
+        private void DeleteCategory()
+        {
+            if (SelectedCategory.IsActive)
+            {
+                categoryDAL.DeleteCategory(SelectedCategory.CategoryId);
+                Categories = categoryBLL.GetAllCategories();
+                OnPropertyChanged(nameof(Categories));
+            }
         }
 
         private void DeleteUser()

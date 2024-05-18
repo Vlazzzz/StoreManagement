@@ -16,5 +16,6 @@ namespace tema3.Models.Entities
         public bool IsActive { get; set; }
         public virtual User User { get; set; }
         public virtual List<ReceiptProduct> ReceiptProducts { get; set; }
+        public string UserName { get; set; }
     }
 }

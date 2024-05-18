@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,13 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using tema3.Models.DataAccessLayer;
 
-namespace tema3
+namespace tema3.Pages
 {
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for EditStockPage.xaml
+    /// </summary>
+    public partial class EditStockPage : Page
     {
-        public MainWindow()
+        public EditStockPage()
         {
             InitializeComponent();
         }

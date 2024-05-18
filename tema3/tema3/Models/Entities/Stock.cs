@@ -20,5 +20,6 @@ namespace tema3.Models.Entities
 
         //to bind directly the name of the category and producer to the datagrid in the UI
         public string ProductName { get; set; }
+        public Decimal SellingPrice { get; set; }
     }
 }

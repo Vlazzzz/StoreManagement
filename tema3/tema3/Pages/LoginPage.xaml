@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:tema3"
       xmlns:viewModels="clr-namespace:tema3.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="500"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="LoginPage"
       Background="#c0a891">
     <Page.DataContext>
@@ -14,10 +14,10 @@
     </Page.DataContext>
 
     <Grid>
-        <TextBlock Text="Supermarket" FontFamily="Bahnschrift SemiBold Condensed" FontSize="60" Margin="115,10,95,288"/>
-        <TextBlock Text="Manager" FontFamily="Bahnschrift SemiBold Condensed" FontSize="60" Margin="160,73,123,265"/>
-        <Image Source ="../Resources/supermarket.png" Margin="8,162,203,30"></Image>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="300" Margin="214,190,0,0">
+        <TextBlock Text="Supermarket" FontFamily="Bahnschrift SemiBold Condensed" FontSize="60" Margin="177,10,33,288"/>
+        <TextBlock Text="Manager" FontFamily="Bahnschrift SemiBold Condensed" FontSize="60" Margin="214,73,70,265"/>
+        <Image Source ="../Resources/shop1.png" Margin="375,198,4,105"></Image>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="301" Margin="152,190,0,0">
             <TextBlock Text="&#x9;         Username" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20"/>
             <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Background="White" Width="126"/>
             <TextBlock Text="&#x9;          Password" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Margin="0,10,0,0"/>
@@ -34,5 +34,6 @@
                 </Button.Template>
             </Button>
         </StackPanel>
+        <Image Source ="/Resources/shop2.png" Margin="15,198,382,117"/>
     </Grid>
 </Page>

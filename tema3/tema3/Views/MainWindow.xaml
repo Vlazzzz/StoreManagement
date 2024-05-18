@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:tema3"
         xmlns:viewModels="clr-namespace:tema3.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="500"
+        Title="MainWindow" Height="450" Width="600"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <viewModels:MainViewModel/>

@@ -6,15 +6,15 @@
       xmlns:local="clr-namespace:tema3"
       xmlns:viewModels="clr-namespace:tema3.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="500"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="CashierPage"
-      Background="MintCream">
+      Background="#c0a891">
 
     <Page.DataContext>
         <viewModels:CashierViewModel/>
     </Page.DataContext>
 
     <Grid>
-        <TextBlock Text="Cashier" FontSize="50" FontFamily="Bahnschrift" FontWeight="Bold" Margin="144,85,144,90" RenderTransformOrigin="0.5,0.5" />
+        <TextBlock Text="Cashier" FontSize="50" FontFamily="Bahnschrift" FontWeight="Bold" Margin="218,88,70,87" RenderTransformOrigin="0.5,0.5" />
     </Grid>
 </Page>
