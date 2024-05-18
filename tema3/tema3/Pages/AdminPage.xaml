@@ -8,16 +8,42 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="500"
       Title="AdminPage"
-      Background="MintCream">
+      Background="#c0a891">
 
     <Page.DataContext>
         <viewModels:AdminViewModel/>
     </Page.DataContext>
 
     <Grid>
-        <TextBlock Text="Admin" FontSize="50" FontFamily="Bahnschrift" FontWeight="Bold" Margin="169,24,169,134" RenderTransformOrigin="0.5,0.5" />
-        <TabControl Margin="0,108,0,23" HorizontalAlignment="Center" Width="448">
-            <TabItem Header="Users">
+        <TextBlock Text="Supermarket" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Margin="130,17,116,141" RenderTransformOrigin="0.5,0.5" />
+        <TextBlock Text="Management" FontSize="30" FontFamily="Bahnschrift" FontWeight="Bold" Margin="165,65,141,93" RenderTransformOrigin="0.5,0.5" />
+        <Image Source="../Resources/shop1.png" Margin="393,28,10,334"></Image>
+        <Image Source="../Resources/shop2.png" Margin="20,28,392,348"></Image>
+
+        <TabControl Margin="0,132,0,23" HorizontalAlignment="Center" Width="448" BorderBrush="Black" BorderThickness="3">
+            <TabControl.Resources>
+                <!-- Style for TabItems -->
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="2" BorderBrush="Black" CornerRadius="1">
+                                    <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#b6977d"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="White"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header=" Users " BorderBrush="Black" BorderThickness="2" FontFamily="Bahnschrift" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -28,7 +54,8 @@
                         <DataGrid ItemsSource="{Binding Users}"
                           AutoGenerateColumns="False"
                           IsReadOnly="True"
-                          CanUserAddRows="False">
+                          CanUserAddRows="False"
+                          SelectedItem ="{Binding SelectedUser}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
                                 <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
@@ -55,7 +82,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="63">
+                        <Button Margin="5" Width="138" Height="63" Command="{Binding DeleteUserCommand}">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -67,7 +94,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Categories">
+            <TabItem Header=" Categories " BorderBrush="Black" BorderThickness="2" FontFamily="Bahnschrift" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -116,7 +143,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Products">
+            <TabItem Header=" Products " BorderBrush="Black" BorderThickness="2" FontFamily="Bahnschrift" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -169,7 +196,7 @@
             </TabItem>
 
 
-            <TabItem Header="Producers">
+            <TabItem Header=" Producers " BorderBrush="Black" BorderThickness="2" FontFamily="Bahnschrift" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -220,7 +247,7 @@
             </TabItem>
 
 
-            <TabItem Header="Stocks">
+            <TabItem Header=" Stocks " BorderBrush="Black" BorderThickness="2" FontFamily="Bahnschrift" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -274,7 +301,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Receipts">
+            <TabItem Header=" Receipts " BorderBrush="Black" BorderThickness="2" FontFamily="Bahnschrift" FontWeight="Bold">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
