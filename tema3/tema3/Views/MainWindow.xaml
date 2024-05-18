@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:tema3"
         xmlns:viewModels="clr-namespace:tema3.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600"
-        WindowStartupLocation="CenterScreen">
+        Title="Supermarket Manager" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Icon="../Resources/shop2.png">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
