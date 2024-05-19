@@ -35,6 +35,8 @@ namespace tema3.ViewModels
         public EditCategoryViewModel()
         {
             ReturnCommand = new RelayCommand<object>(ReturnToMenuFunction);
+            AddCategoryInDatabaseCommand = new RelayCommand(AddCategoryInDatabase);
+            UpdateCategoryInDatabaseCommand = new RelayCommand(UpdateCategoryInDatabase);
             Categories = categoryBLL.GetAllCategories();
         }
 

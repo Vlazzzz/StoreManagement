@@ -262,7 +262,13 @@ namespace tema3.ViewModels
         }
         private void EditProducer(object obj)
         {
-            throw new NotImplementedException();
+            if (SelectedProducer != null)
+            {
+                var currPage = obj as Page;
+                var editProducerPage = new EditProducerPage();
+                editProducerPage.DataContext = new EditProducerViewModel(SelectedProducer); // Transmiteți utilizatorul selectat către EditProductViewModel
+                currPage.NavigationService.Navigate(editProducerPage);
+            }
         }
         private void DeleteProducer()
         {

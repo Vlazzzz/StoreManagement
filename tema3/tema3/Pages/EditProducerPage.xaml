@@ -4,13 +4,69 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:tema3.Pages"
+      xmlns:viewModels="clr-namespace:tema3.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="EditProducerPage"
       Background="#c0a891">
 
-    <Grid>
-        <TextBlock Text="Add/Edit Producer" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Margin="250,44,197,344" RenderTransformOrigin="0.5,0.5" />
+    <Page.DataContext>
+        <viewModels:EditProducerViewModel/>
+    </Page.DataContext>
 
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="187"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="96"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Update Producer" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" HorizontalAlignment="Left" Margin="69,20,0,20" Grid.Column="1" Width="248"/>
+
+        <TextBlock Text="Producer" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
+        <TextBox Text="{Binding ProducerName, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
+
+        <TextBlock Text="OriginCountry" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
+        <TextBox Text="{Binding OriginCountry, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="2" Grid.Column="1" Margin="10,10,10,10"/>
+
+        <Button Command="{Binding AddProducerInDatabaseCommand}"
+                Margin="8,34,0,85" Width="261" Grid.Row="4" HorizontalAlignment="Left" RenderTransformOrigin="0.106,0.435" Grid.ColumnSpan="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Add"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Command="{Binding ReturnCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+            Margin="9,107,0,31" Width="533" Grid.Row="4" HorizontalAlignment="Left" RenderTransformOrigin="0.106,0.435" Grid.ColumnSpan="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Back to Menu"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Command="{Binding UpdateProducerInDatabaseCommand}"
+            Margin="161,34,0,85" Width="270" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" RenderTransformOrigin="0.106,0.435">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Update"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Page>
