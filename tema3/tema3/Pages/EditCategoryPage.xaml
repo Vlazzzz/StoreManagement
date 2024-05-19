@@ -32,7 +32,7 @@
         <TextBlock Text="Update Category" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" HorizontalAlignment="Left" Margin="19,20,0,20" Grid.Column="1" Width="329" RenderTransformOrigin="0.359,0.385"/>
 
         <TextBlock Text="Category" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
-        <TextBox Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
+        <TextBox FontSize="16" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding Category, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
 
 
 

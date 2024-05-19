@@ -32,10 +32,10 @@
         <TextBlock Text="Update Producer" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" HorizontalAlignment="Left" Margin="27,20,0,20" Grid.Column="1" Width="328"/>
 
         <TextBlock Text="Producer" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
-        <TextBox Text="{Binding ProducerName, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
+        <TextBox  FontSize="16" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding ProducerName, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
 
         <TextBlock Text="OriginCountry" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
-        <TextBox Text="{Binding OriginCountry, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="2" Grid.Column="1" Margin="10,10,10,10"/>
+        <TextBox FontSize="16" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding OriginCountry, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="2" Grid.Column="1" Margin="10,10,10,10"/>
 
         <Button Command="{Binding AddProducerInDatabaseCommand}"
                 Margin="9,54,0,65" Width="262" Grid.Row="4" HorizontalAlignment="Left" RenderTransformOrigin="0.106,0.435" Grid.ColumnSpan="2">

@@ -32,13 +32,14 @@
         <TextBlock Text="Update User" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" HorizontalAlignment="Left" Margin="69,20,0,20" Grid.Column="1" Width="248"/>
 
         <TextBlock Text="Username" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
-        <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
+        <TextBox FontSize="16" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10"/>
 
         <TextBlock Text="Password" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
-        <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="2" Grid.Column="1" Margin="10,10,10,10"/>
+        <TextBox FontSize="16" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="2" Grid.Column="1" Margin="10,10,10,10"/>
 
         <TextBlock Text="Category" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" 
+        <ComboBox FontSize="16" FontFamily="Bahnschrift SemiBold Condensed"
+                  Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" 
                   SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
                   Text ="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}">
             <ComboBoxItem Content="Admin" />
