@@ -288,7 +288,13 @@ namespace tema3.ViewModels
         }
         private void EditStock(object obj)
         {
-            throw new NotImplementedException();
+            if (SelectedStock != null)
+            {
+                var currPage = obj as Page;
+                var editStockPage = new EditStockPage();
+                editStockPage.DataContext = new EditStockViewModel(SelectedStock); // Transmiteți utilizatorul selectat către EditProductViewModel
+                currPage.NavigationService.Navigate(editStockPage);
+            }
         }
         private void DeleteStock()
         {

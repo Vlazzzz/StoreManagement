@@ -121,13 +121,19 @@ namespace tema3.ViewModels
         private void AddProductInDatabase()
         {
             if (ProductName == null || Barcode == null || SelectedCategory == null || SelectedProducer == null)
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
                 return;
+            }
 
             // check if the product is already in the database
             foreach (Product product in Products)
             {
                 if (product.Name == ProductName && product.Barcode == Barcode)
+                {
+                    System.Windows.MessageBox.Show("Product already exists!");
                     return;
+                }
             }
 
 
@@ -143,7 +149,10 @@ namespace tema3.ViewModels
         private void UpdateProductInDatabase()
         {
             if (ProductName == null || Barcode == null || SelectedCategory == null || SelectedProducer == null)
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
                 return;
+            }
             //check if the user is already in the database
             foreach (Product product in Products)
             {

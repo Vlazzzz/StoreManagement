@@ -67,12 +67,18 @@ namespace tema3.ViewModels
         private void AddProducerInDatabase()
         {
             if (ProducerName == null || OriginCountry == null)
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
                 return;
-            //check if the user is already in the database
+            }
+            //check if the producer is already in the database
             foreach (Producer producer in Producers)
             {
-                if(producer.Name == ProducerName)
+                if (producer.Name == ProducerName)
+                {
+                    System.Windows.MessageBox.Show("Producer already exists!");
                     return;
+                }
             }
 
             producerDAL.InsertProducer(ProducerName, OriginCountry);
@@ -82,6 +88,22 @@ namespace tema3.ViewModels
 
         private void UpdateProducerInDatabase()
         {
+            if (ProducerName == null || OriginCountry == null)
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
+                return;
+            }
+
+            //check if the producer is already in the database
+            foreach (Producer producer in Producers)
+            {
+                if (producer.Name == ProducerName && producer.ProducerId != _selectedProducer.ProducerId)
+                {
+                    System.Windows.MessageBox.Show("Producer already exists!");
+                    return;
+                }
+            }
+
             producerDAL.UpdateProducer(_selectedProducer.ProducerId, ProducerName, OriginCountry);
             Producers = producerBLL.GetAllProducers();
             OnPropertyChanged(nameof(Producers));

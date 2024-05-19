@@ -86,6 +86,22 @@ namespace tema3.ViewModels
             else
                 isAdmin = false;
 
+            if (Username == null || Password == null)
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
+                return;
+            }
+
+            //check if the user is already in the database
+            foreach (User user in Users)
+            {
+                if (user.Username == Username && user.UserId != _selectedUser.UserId)
+                {
+                    System.Windows.MessageBox.Show("User already exists!");
+                    return;
+                }
+            }
+
             userDAL.UpdateUser(_selectedUser.UserId, Username, Password, isAdmin);
             Users = userBLL.GetAllUsers();
             OnPropertyChanged(nameof(Users));
@@ -105,14 +121,20 @@ namespace tema3.ViewModels
             else
                 isAdmin = false;
             if (Username == null || Password == null)
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
                 return;
+            }
+
             //check if the user is already in the database
             foreach (User user in Users)
             {
-                if(user.Username == Username)
+                if (user.Username == Username)
+                {
+                    System.Windows.MessageBox.Show("User already exists!");
                     return;
+                }
             }
-
 
             userDAL.InsertUser(Username, Password, isAdmin);
             Users = userBLL.GetAllUsers();

@@ -346,43 +346,8 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </ScrollViewer>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
-                        <Button Command="{Binding AddReceiptCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
-                                Margin="5" Width="138" Height="61">
-                            <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="Black" CornerRadius="10">
-                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Add"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        <Button Command="{Binding EditReceiptCommand}" 
-                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
-                                Margin="5" Width="138" Height="62">
-                            <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="Black" CornerRadius="10">
-                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Update"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                        <Button Command="{Binding DeleteReceiptCommand}" Margin="5" Width="138" Height="63">
-                            <Button.Template>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border Background="Black" CornerRadius="10">
-                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Delete"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </StackPanel>
                 </Grid>
             </TabItem>
-
-
         </TabControl>
     </Grid>
 </Page>

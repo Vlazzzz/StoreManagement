@@ -55,11 +55,17 @@ namespace tema3.ViewModels
         private void AddCategoryInDatabase()
         {
             if (Category == "")
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
                 return;
+            }
             foreach(Category cat in Categories)
             {
                 if (cat.Name == Category)
+                {
+                    System.Windows.MessageBox.Show("Category already exists!");
                     return;
+                }
             }
 
             categoryDAL.InsertCategory(Category);
@@ -70,11 +76,17 @@ namespace tema3.ViewModels
         private void UpdateCategoryInDatabase()
         {
             if(Category == "")
+            {
+                System.Windows.MessageBox.Show("Please fill in all the fields!");
                 return;
+            }
             foreach (Category cat in Categories)
             {
                 if (cat.Name == Category)
+                {
+                    System.Windows.MessageBox.Show("Category already exists!");
                     return;
+                }
             }
             categoryDAL.UpdateCategory(_selectedCategory.CategoryId, Category);
             Categories = categoryBLL.GetAllCategories();
