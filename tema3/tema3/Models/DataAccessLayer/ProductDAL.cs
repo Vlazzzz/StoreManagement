@@ -27,7 +27,7 @@ namespace tema3.Models.DataAccessLayer
             }
         }
 
-        public void UpdateProduct(string productId, string name, string barcode, int categoryId, int producerId)
+        public void UpdateProduct(int productId, string name, string barcode, int categoryId, int producerId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

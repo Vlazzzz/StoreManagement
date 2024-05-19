@@ -62,6 +62,7 @@ namespace tema3.ViewModels
 
         public EditUserViewModel(User selectedUser)
         {
+            Users = userBLL.GetAllUsers();
             _selectedUser = selectedUser;
             // Inițializați proprietățile Username și SelectedCategory cu valorile din utilizatorul selectat
             Username = selectedUser.Username;
@@ -70,21 +71,21 @@ namespace tema3.ViewModels
             if (selectedUser.UserType)
                 SelectedCategory = "Admin";
             else
-                SelectedCategory = "User";
+                SelectedCategory = "Cashier";
             
             AddUserInDatabaseCommand = new RelayCommand(AddUserInDatabase);
             UpdateUserInDatabaseCommand = new RelayCommand(UpdateUserInDatabase);
             ReturnCommand = new RelayCommand<object>(ReturnToMenuFunction);
-            Users = userBLL.GetAllUsers();
         }
 
         private void UpdateUserInDatabase()
         {
             bool isAdmin;
-            if (SelectedCategory == "System.Windows.Controls.ComboBoxItem: Admin")
+            if (SelectedCategory == "System.Windows.Controls.ComboBoxItem: Admin" || SelectedCategory == "Admin")
                 isAdmin = true;
             else
                 isAdmin = false;
+
             userDAL.UpdateUser(_selectedUser.UserId, Username, Password, isAdmin);
             Users = userBLL.GetAllUsers();
             OnPropertyChanged(nameof(Users));

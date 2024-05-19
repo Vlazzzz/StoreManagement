@@ -4,13 +4,85 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:tema3.Pages"
+      xmlns:viewModels="clr-namespace:tema3.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="EditProductPage"
       Background="#c0a891">
 
-    <Grid>
-        <TextBlock Text="Add/Edit Product" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Margin="258,46,200,342" RenderTransformOrigin="0.5,0.5" />
+    <Page.DataContext>
+        <viewModels:EditProductViewModel/>
+    </Page.DataContext>
 
+    <Grid Margin="5" RenderTransformOrigin="0.496,0.553">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="88.007"/>
+            <RowDefinition Height="Auto" MinHeight="37.96"/>
+            <RowDefinition Height="Auto" MinHeight="37.96"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="41.96"/>
+            <RowDefinition Height="Auto" MinHeight="187"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="96"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Update User" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" HorizontalAlignment="Left" Margin="83,20,0,20" Grid.Column="1" Width="248"/>
+
+        <TextBlock Text="Product" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="14,0,6,0" Height="24"/>
+        <TextBox Text="{Binding ProductName, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="1" Grid.Column="1" Margin="10,10,18,10"/>
+
+        <TextBlock Text="Barcode" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="14,0,6,0" Height="24"/>
+        <TextBox Text="{Binding Barcode, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="2" Grid.Column="1" Margin="10,10,18,10"/>
+
+        <TextBlock Text="Category" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="14,0,6,0" Height="24"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" Margin="10,10,18,10" 
+                  ItemsSource="{Binding Categories}"
+                  DisplayMemberPath="Name"
+                  SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
+
+        <TextBlock Text="Producer" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="14,0,6,0" Height="24"/>
+
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="10,10,18,10" 
+                  ItemsSource="{Binding Producers}"
+                  DisplayMemberPath="Name"
+                  SelectedItem="{Binding SelectedProducer, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>
+
+        <Button Command="{Binding AddProductInDatabaseCommand}"
+                Margin="28,20,0,99" Width="260" Grid.Row="5" HorizontalAlignment="Left" RenderTransformOrigin="0.106,0.435" Grid.ColumnSpan="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Add"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Command="{Binding ReturnCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+            Margin="28,93,0,45" Width="534" Grid.Row="5" HorizontalAlignment="Left" RenderTransformOrigin="0.106,0.435" Grid.ColumnSpan="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Back to Menu"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Command="{Binding UpdateProductInDatabaseCommand}"
+            Margin="196,20,0,99" Width="270" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" RenderTransformOrigin="0.106,0.435">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Update"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Page>

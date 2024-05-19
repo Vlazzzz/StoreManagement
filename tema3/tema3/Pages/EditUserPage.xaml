@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:tema3.Pages"
       xmlns:viewModels="clr-namespace:tema3.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="EditUserPage"
       Background="#c0a891">
 
@@ -39,7 +39,8 @@
 
         <TextBlock Text="Category" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
         <ComboBox Grid.Row="3" Grid.Column="1" Margin="10,10,10,10" 
-                  SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}">
+                  SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
+                  Text ="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}">
             <ComboBoxItem Content="Admin" />
             <ComboBoxItem Content="Cashier" />
         </ComboBox>

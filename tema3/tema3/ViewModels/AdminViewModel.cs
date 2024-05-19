@@ -31,14 +31,30 @@ namespace tema3.ViewModels
         private readonly ReceiptDAL receiptDAL = new ReceiptDAL();
         private readonly StockDAL stockDAL = new StockDAL();
 
-        public ICommand DeleteUserCommand { get; set; }
-        public ICommand DeleteProductCommand { get; set; }
-        public ICommand DeleteCategoryCommand { get; set; }
-        public ICommand DeleteProducerCommand { get; set; }
-        public ICommand DeleteReceiptCommand { get; set; }
-        public ICommand DeleteStockCommand { get; set; }
         public ICommand AddUserCommand { get; set; }
         public ICommand EditUserCommand { get; set; }
+        public ICommand DeleteUserCommand { get; set; }
+        
+        public ICommand AddCategoryCommand { get; set; }
+        public ICommand EditCategoryCommand { get; set; }
+        public ICommand DeleteCategoryCommand { get; set; }
+
+        public ICommand AddProductCommand { get; set; }
+        public ICommand EditProductCommand { get; set; }
+        public ICommand DeleteProductCommand { get; set; }
+        
+        public ICommand AddProducerCommand { get; set; }
+        public ICommand EditProducerCommand { get; set; }
+        public ICommand DeleteProducerCommand { get; set; }
+
+        public ICommand AddStockCommand { get; set; }
+        public ICommand EditStockCommand { get; set; }
+        public ICommand DeleteStockCommand { get; set; }
+
+        public ICommand AddReceiptCommand { get; set; }
+        public ICommand EditReceiptCommand { get; set; }
+        public ICommand DeleteReceiptCommand { get; set; }
+        
 
         private User _selectedUser;
         public User SelectedUser
@@ -136,17 +152,37 @@ namespace tema3.ViewModels
             Receipts = receiptBLL.GetAllReceipts();
             Stocks = stockBLL.GetAllStocks();
 
-            DeleteUserCommand = new RelayCommand(DeleteUser);
-            DeleteCategoryCommand = new RelayCommand(DeleteCategory);
-            DeleteProducerCommand = new RelayCommand(DeleteProducer);
-            DeleteProductCommand = new RelayCommand(DeleteProduct);
-            DeleteReceiptCommand = new RelayCommand(DeleteReceipt);
-            DeleteStockCommand = new RelayCommand(DeleteStock);
-
             AddUserCommand = new RelayCommand<object>(AddUser);
             EditUserCommand = new RelayCommand<object>(EditUser);
+            DeleteUserCommand = new RelayCommand(DeleteUser);
+            
+            AddCategoryCommand = new RelayCommand<object>(AddCategory);
+            EditCategoryCommand = new RelayCommand<object>(EditCategory);
+            DeleteCategoryCommand = new RelayCommand(DeleteCategory);
+
+            AddProductCommand = new RelayCommand<object>(AddProduct);
+            EditProductCommand = new RelayCommand<object>(EditProduct);
+            DeleteProductCommand = new RelayCommand(DeleteProduct);
+
+            AddProducerCommand = new RelayCommand<object>(AddProducer);
+            EditProducerCommand = new RelayCommand<object>(EditProducer);
+            DeleteProducerCommand = new RelayCommand(DeleteProducer);
+
+            AddStockCommand = new RelayCommand<object>(AddStock);
+            EditStockCommand = new RelayCommand<object>(EditStock);
+            DeleteStockCommand = new RelayCommand(DeleteStock);
+
+            AddReceiptCommand = new RelayCommand<object>(AddReceipt);
+            EditReceiptCommand = new RelayCommand<object>(EditReceipt);
+            DeleteReceiptCommand = new RelayCommand(DeleteReceipt);
         }
 
+        //USER OPERATIONS
+        private void AddUser(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new EditUserPage());
+        }
         private void EditUser(object obj)
         {
             if (SelectedUser != null)
@@ -157,46 +193,80 @@ namespace tema3.ViewModels
                 currPage.NavigationService.Navigate(editUserPage);
             }
         }
-
-
-        private void AddUser(object obj)
+        private void DeleteUser()
         {
-            var currPage = obj as Page;
-            currPage.NavigationService.Navigate(new EditUserPage());
-        }
-
-        private void DeleteStock()
-        {
-            if (SelectedStock.IsActive)
+            if (SelectedUser != null)
             {
-                stockDAL.DeleteStock(SelectedStock.StockId);
-                Stocks = stockBLL.GetAllStocks();
-                OnPropertyChanged(nameof(Stocks));
+                userDAL.DeleteUser(SelectedUser.UserId);
+                Users = userBLL.GetAllUsers();
+                OnPropertyChanged(nameof(Users));
             }
         }
 
-        private void DeleteReceipt()
+        //DELETE OPERATIONS
+        private void AddCategory(object obj)
         {
-            if (SelectedReceipt.IsActive)
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new EditCategoryPage());
+        }
+        private void EditCategory(object obj)
+        {
+            if (SelectedCategory != null)
             {
-                receiptDAL.DeleteReceipt(SelectedReceipt.ReceiptId);
-                Receipts = receiptBLL.GetAllReceipts();
-                OnPropertyChanged(nameof(Receipts));
+                var currPage = obj as Page;
+                var editCategoryPage = new EditCategoryPage();
+                editCategoryPage.DataContext = new EditCategoryViewModel(SelectedCategory); // Transmiteți utilizatorul selectat către EditCategoryViewModel
+                currPage.NavigationService.Navigate(editCategoryPage);
+            }
+        }
+        private void DeleteCategory()
+        {
+            if (SelectedCategory != null)
+            {
+                categoryDAL.DeleteCategory(SelectedCategory.CategoryId);
+                Categories = categoryBLL.GetAllCategories();
+                OnPropertyChanged(nameof(Categories));
+            }
+        }
+        //PRODUCT OPERATIONS
+        private void AddProduct(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new EditProductPage());
+        }
+        private void EditProduct(object obj)
+        {
+            if (SelectedProduct != null)
+            {
+                var currPage = obj as Page;
+                var editProductPage = new EditProductPage();
+                editProductPage.DataContext = new EditProductViewModel(SelectedProduct); // Transmiteți utilizatorul selectat către EditProductViewModel
+                currPage.NavigationService.Navigate(editProductPage);
             }
         }
         private void DeleteProduct()
         {
-            if (SelectedProduct.IsActive)
+            if (SelectedProduct != null)
             {
-                productDAL.DeleteProduct(SelectedProduct.ProducerId);
+                productDAL.DeleteProduct(SelectedProduct.ProductId);
                 Products = productBLL.GetAllProducts();
                 OnPropertyChanged(nameof(Products));
             }
         }
 
+        //PRODUCER OPERATIONS
+        private void AddProducer(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new EditProducerPage());
+        }
+        private void EditProducer(object obj)
+        {
+            throw new NotImplementedException();
+        }
         private void DeleteProducer()
         {
-            if (SelectedProducer.IsActive)
+            if (SelectedProducer != null)
             {
                 producerDAL.DeleteProducer(SelectedProducer.ProducerId);
                 Producers = producerBLL.GetAllProducers();
@@ -204,23 +274,42 @@ namespace tema3.ViewModels
             }
         }
 
-        private void DeleteCategory()
+        //STOCK OPERATIONS
+        private void AddStock(object obj)
         {
-            if (SelectedCategory.IsActive)
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new EditStockPage());
+        }
+        private void EditStock(object obj)
+        {
+            throw new NotImplementedException();
+        }
+        private void DeleteStock()
+        {
+            if (SelectedStock != null)
             {
-                categoryDAL.DeleteCategory(SelectedCategory.CategoryId);
-                Categories = categoryBLL.GetAllCategories();
-                OnPropertyChanged(nameof(Categories));
+                stockDAL.DeleteStock(SelectedStock.StockId);
+                Stocks = stockBLL.GetAllStocks();
+                OnPropertyChanged(nameof(Stocks));
             }
         }
-
-        private void DeleteUser()
+        //RECEIPT OPERATIONS
+        private void AddReceipt(object obj)
         {
-            if (SelectedUser.IsActive)
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new EditReceiptPage());
+        }
+        private void EditReceipt(object obj)
+        {
+            throw new NotImplementedException();
+        }
+        private void DeleteReceipt()
+        {
+            if (SelectedReceipt != null)
             {
-                userDAL.DeleteUser(SelectedUser.UserId);
-                Users = userBLL.GetAllUsers();
-                OnPropertyChanged(nameof(Users));
+                receiptDAL.DeleteReceipt(SelectedReceipt.ReceiptId);
+                Receipts = receiptBLL.GetAllReceipts();
+                OnPropertyChanged(nameof(Receipts));
             }
         }
     }

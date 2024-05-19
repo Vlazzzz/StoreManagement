@@ -50,38 +50,38 @@
                         <RowDefinition Height="Auto" />
                         <!-- This row is for the buttons -->
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <DataGrid ItemsSource="{Binding Users}"
-                          AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          CanUserAddRows="False"
-                          SelectedItem ="{Binding SelectedUser}">
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      SelectedItem="{Binding SelectedUser}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Username" Binding="{Binding Username}"/>
-                                <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
-                                <DataGridTextColumn Header="UserType" Binding="{Binding UserType}"/>
+                                <DataGridTextColumn Header="Username" Binding="{Binding Username}" />
+                                <DataGridTextColumn Header="Password" Binding="{Binding Password}" />
+                                <DataGridTextColumn Header="UserType" Binding="{Binding UserType}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
+                    </ScrollViewer>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
                         <Button Command="{Binding AddUserCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
-                                Margin="5" Width="138" Height="61">
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                    Margin="5" Width="138" Height="61">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
-                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Add"/>
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Add" />
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
                         <Button Command="{Binding EditUserCommand}"
-                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
-                                Margin="5" Width="138" Height="62">
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                    Margin="5" Width="138" Height="62">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
-                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Update"/>
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Update" />
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -90,7 +90,7 @@
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
-                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Delete"/>
+                                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Delete" />
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -105,7 +105,7 @@
                         <RowDefinition Height="Auto" />
                         <!-- This row is for the buttons -->
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <DataGrid ItemsSource="{Binding Categories}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
@@ -115,9 +115,11 @@
                                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
+                    </ScrollViewer>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
-                        <Button Margin="5" Width="138" Height="61">
+                        <Button Command="{Binding AddCategoryCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="61">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -126,7 +128,9 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="62">
+                        <Button Command="{Binding EditCategoryCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="62">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -155,7 +159,7 @@
                         <RowDefinition Height="Auto" />
                         <!-- This row is for the buttons -->
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <DataGrid ItemsSource="{Binding Products}" 
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
@@ -168,9 +172,11 @@
                                 <DataGridTextColumn Header="Producer" Binding="{Binding ProducerName}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
+                    </ScrollViewer>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
-                        <Button Margin="5" Width="138" Height="61">
+                        <Button Command="{Binding AddProductCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="61">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -179,7 +185,9 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="62">
+                        <Button Command="{Binding EditProductCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="62">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -209,7 +217,7 @@
                         <RowDefinition Height="Auto" />
                         <!-- This row is for the buttons -->
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <DataGrid ItemsSource="{Binding Producers}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
@@ -220,9 +228,11 @@
                                 <DataGridTextColumn Header="OriginCountry" Binding="{Binding OriginCountry}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
+                    </ScrollViewer>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
-                        <Button Margin="5" Width="138" Height="61">
+                        <Button Command="{Binding AddProducerCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="61">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -231,7 +241,9 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="62">
+                        <Button Command="{Binding EditProducerCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="62">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -261,7 +273,7 @@
                         <RowDefinition Height="Auto" />
                         <!-- This row is for the buttons -->
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <DataGrid ItemsSource="{Binding Stocks}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
@@ -277,9 +289,11 @@
                                 <DataGridTextColumn Header="SellingPrice" Binding="{Binding SellingPrice}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
+                    </ScrollViewer>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
-                        <Button Margin="5" Width="138" Height="61">
+                        <Button Command="{Binding AddStockCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="61">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -288,7 +302,9 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="62">
+                        <Button Command="{Binding EditStockCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="62">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -317,7 +333,7 @@
                         <RowDefinition Height="Auto" />
                         <!-- This row is for the buttons -->
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0">
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <DataGrid AutoGenerateColumns="False"
                       IsReadOnly="True"
                       CanUserAddRows="False"
@@ -329,9 +345,11 @@
                                 <DataGridTextColumn Header="AmountReceived" Binding="{Binding AmountReceived}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
+                    </ScrollViewer>
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="442">
-                        <Button Margin="5" Width="138" Height="61">
+                        <Button Command="{Binding AddReceiptCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="61">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">
@@ -340,7 +358,9 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Margin="5" Width="138" Height="62">
+                        <Button Command="{Binding EditReceiptCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                                Margin="5" Width="138" Height="62">
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border Background="Black" CornerRadius="10">

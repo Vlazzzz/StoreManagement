@@ -87,5 +87,52 @@ namespace tema3.Models.BusinessLogicLayer
             return categoryName;
         }
 
+        public int GetProducerIdByName(string producerName)
+        {
+            int producerId = -1; // Initialize with a default value indicating not found.
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("GetProducerIdByName", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ProducerName", producerName);
+
+                    connection.Open();
+                    var result = command.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out int id))
+                    {
+                        producerId = id;
+                    }
+                }
+            }
+
+            return producerId;
+        }
+
+        public int GetCategoryIdByName(string categoryName)
+        {
+            int categoryId = -1; // Initialize with a default value indicating not found.
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("GetCategoryIdByName", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@CategoryName", categoryName);
+
+                    connection.Open();
+                    var result = command.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out int id))
+                    {
+                        categoryId = id;
+                    }
+                }
+            }
+
+            return categoryId;
+        }
+
+
     }
 }
