@@ -14,7 +14,52 @@
         <viewModels:CashierViewModel/>
     </Page.DataContext>
 
-    <Grid>
-        <TextBlock Text="Cashier" FontSize="50" FontFamily="Bahnschrift" FontWeight="Bold" Margin="218,88,70,87" RenderTransformOrigin="0.5,0.5" />
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Product List" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,17,0,23" Grid.Row="0"/>
+        <Image Source="../Resources/shop1.png" Margin="442,-6,10,6" RenderTransformOrigin="0.524,0.635"/>
+        <Image Source="/Resources/shop2.png" Margin="22,6,453,17" RenderTransformOrigin="0.524,0.635"/>
+
+        <Button Command="{Binding BackToLoginCommand}" 
+        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+        x:Name="BackToLogin" Margin="219,180,219,10" Grid.Row="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="BackToLogin" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
+            <TextBox x:Name="SearchBox" Width="300" Height="21" 
+                     Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" 
+                     VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <Button Command="{Binding SearchProductsCommand}" FontSize="16" FontWeight="SemiBold" FontFamily="Bahnschrift" Content="Search" Width="100" Height="22"/>
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding FilteredProducts}" 
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  SelectedItem="{Binding SelectedProduct}"
+                  BorderBrush="Black"
+                  FontFamily="Bahnschrift"
+                  HeadersVisibility="Column"
+                  BorderThickness="2"
+                  Grid.Row="2" Margin="0,0,0,96">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Barcode" Binding="{Binding Barcode}"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding CategoryName}"/>
+                <DataGridTextColumn Header="Producer" Binding="{Binding ProducerName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

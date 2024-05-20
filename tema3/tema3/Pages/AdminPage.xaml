@@ -17,9 +17,20 @@
     <Grid>
         <TextBlock Text="Supermarket" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" Margin="181,17,65,141" RenderTransformOrigin="0.5,0.5" />
         <TextBlock Text="Management" FontSize="30" FontFamily="Bahnschrift" FontWeight="Bold" Margin="217,65,89,93" RenderTransformOrigin="0.5,0.5" />
-        <Image Source="../Resources/shop1.png" Margin="379,22,-23,318"></Image>
-        <Image Source="../Resources/shop2.png" Margin="-38,22,386,329"></Image>
+        <Image Source="../Resources/shop1.png" Margin="2,10,431,304"></Image>
+        <Button Command="{Binding BackToLoginCommand}" 
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                x:Name="BackToLogin" Margin="463,52,39,328">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="BackToLogin" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
+        
         <TabControl Margin="0,132,0,23" HorizontalAlignment="Center" Width="522" BorderBrush="Black" BorderThickness="3">
             <TabControl.Resources>
                 <!-- Style for TabItems -->
@@ -55,6 +66,7 @@
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
                       CanUserAddRows="False"
+                      HeadersVisibility="Column"
                       SelectedItem="{Binding SelectedUser}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Username" Binding="{Binding Username}" />
@@ -108,6 +120,7 @@
                     <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
                         <DataGrid ItemsSource="{Binding Categories}"
                       AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
                       IsReadOnly="True"
                       CanUserAddRows="False"
                       SelectedItem ="{Binding SelectedCategory}">
@@ -163,6 +176,7 @@
                         <DataGrid ItemsSource="{Binding Products}" 
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
+                      HeadersVisibility="Column"
                       CanUserAddRows="False"
                       SelectedItem ="{Binding SelectedProduct}">
                             <DataGrid.Columns>
@@ -221,6 +235,7 @@
                         <DataGrid ItemsSource="{Binding Producers}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
+                      HeadersVisibility="Column"
                       CanUserAddRows="False"
                       SelectedItem ="{Binding SelectedProducer}">
                             <DataGrid.Columns>
@@ -277,6 +292,7 @@
                         <DataGrid ItemsSource="{Binding Stocks}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
+                      HeadersVisibility="Column"
                       CanUserAddRows="False"
                       SelectedItem ="{Binding SelectedStock}">
                             <DataGrid.Columns>
@@ -337,6 +353,7 @@
                         <DataGrid AutoGenerateColumns="False"
                       IsReadOnly="True"
                       CanUserAddRows="False"
+                      HeadersVisibility="Column"
                       SelectedItem ="{Binding SelectedReceipt}"
                       ItemsSource="{Binding Receipts}">
                             <DataGrid.Columns>

@@ -54,6 +54,9 @@ namespace tema3.ViewModels
         public ICommand AddReceiptCommand { get; set; }
         public ICommand EditReceiptCommand { get; set; }
         public ICommand DeleteReceiptCommand { get; set; }
+
+
+        public ICommand BackToLoginCommand { get; set; }
         
 
         private User _selectedUser;
@@ -175,6 +178,14 @@ namespace tema3.ViewModels
             AddReceiptCommand = new RelayCommand<object>(AddReceipt);
             EditReceiptCommand = new RelayCommand<object>(EditReceipt);
             DeleteReceiptCommand = new RelayCommand(DeleteReceipt);
+
+            BackToLoginCommand = new RelayCommand<object>(BackToLogin);
+        }
+
+        private void BackToLogin(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new LoginPage());
         }
 
         //USER OPERATIONS
