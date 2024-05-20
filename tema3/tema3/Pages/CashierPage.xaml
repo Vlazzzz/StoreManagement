@@ -25,18 +25,6 @@
         <Image Source="../Resources/shop1.png" Margin="442,-6,10,6" RenderTransformOrigin="0.524,0.635"/>
         <Image Source="/Resources/shop2.png" Margin="22,6,453,17" RenderTransformOrigin="0.524,0.635"/>
 
-        <Button Command="{Binding BackToLoginCommand}" 
-        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
-        x:Name="BackToLogin" Margin="219,180,219,10" Grid.Row="2">
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="Black" CornerRadius="10">
-                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="BackToLogin" />
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
             <TextBox x:Name="SearchBox" Width="300" Height="21" 
                      Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" 
@@ -53,7 +41,7 @@
                   FontFamily="Bahnschrift"
                   HeadersVisibility="Column"
                   BorderThickness="2"
-                  Grid.Row="2" Margin="0,0,0,96">
+                  Grid.Row="2" Margin="22,4,21,91">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Barcode" Binding="{Binding Barcode}"/>
@@ -61,5 +49,40 @@
                 <DataGridTextColumn Header="Producer" Binding="{Binding ProducerName}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Command="{Binding AddReceiptCommand}" 
+            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+            x:Name="AddReceipt" Margin="201,151,189,0" Grid.Row="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="AddReceipt" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Command="{Binding InspectReceiptsCommand}" 
+            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+            x:Name="InspectReceipts" Margin="37,151,352,0" Grid.Row="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="InspectReceipts" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Command="{Binding BackToLoginCommand}" 
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+                x:Name="BackToLogin" Margin="365,151,33,0" Grid.Row="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="BackToLogin" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
     </Grid>
 </Page>

@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Supermarket.ViewModels.Commands;
 using tema3.Models.BusinessLogicLayer;
 using tema3.Models.Entities;
+using tema3.Pages;
 
 namespace tema3.ViewModels
 {
@@ -19,13 +20,29 @@ namespace tema3.ViewModels
 
         public ICommand SearchProductsCommand { get; set; }
         public ICommand BackToLoginCommand { get; set; }
+        public ICommand InspectReceiptsCommand{ get; set; }
+        public ICommand AddReceiptCommand { get; set; }
 
         public CashierViewModel()
         {
             SearchProductsCommand = new RelayCommand(SearchProducts);
             BackToLoginCommand = new RelayCommand<object>(BackToLogin);
+            InspectReceiptsCommand = new RelayCommand<object>(InspectReceipts);
+            AddReceiptCommand = new RelayCommand<object>(AddReceipt);
             Products = productBLL.GetAllProducts();
             FilteredProducts = new ObservableCollection<Product>(Products);
+        }
+
+        private void AddReceipt(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new AddReceiptPage());
+        }
+
+        private void InspectReceipts(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new InspectReceiptsPage());
         }
 
         private void BackToLogin(object obj)
