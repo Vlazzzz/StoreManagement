@@ -14,7 +14,47 @@
         <viewModels:AddReceiptViewModel/>
     </Page.DataContext>
 
-    <Grid>
-        
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="187"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="96"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Add Receipt" FontSize="40" FontFamily="Bahnschrift" FontWeight="Bold" HorizontalAlignment="Left" Margin="69,20,0,20" Grid.Column="1" Width="248"/>
+
+        <TextBlock Text="Unit" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
+        <TextBox FontSize="16" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding Unit, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="3" Grid.Column="1" Margin="0,10,25,10"/>
+
+        <TextBlock Text="Quantity" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
+        <TextBox FontSize="16" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" Background="White" Grid.Row="2" Grid.Column="1" Margin="0,10,25,10"/>
+
+        <TextBlock Text="Product" FontFamily="Bahnschrift SemiBold Condensed" FontSize="20" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,10,0" Height="24"/>
+        <ComboBox ItemsSource="{Binding ProductsInStock}"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ProductId"
+                  SelectedValue="{Binding ProductId}"
+                  FontSize="16" FontFamily="Bahnschrift SemiBold Condensed"
+                  Grid.Row="1" Grid.Column="1" Margin="0,10,25,10">
+        </ComboBox>
+        <Button Command="{Binding AddProductOnReceiptCommand}"
+            Grid.Column="2" Margin="25,88,26,187" Grid.RowSpan="5">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Add Product" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Page>

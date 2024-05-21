@@ -14,7 +14,55 @@
         <viewModels:InspectReceiptsViewModel/>
     </Page.DataContext>
 
-    <Grid>
-        
+    <Grid Margin="20">
+        <!-- Definește rândurile și coloanele pentru grid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- TextBlock pentru titlu -->
+        <TextBlock FontWeight="Bold" FontFamily="Bahnschrift" FontSize="40" Text="Receipts" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+
+        <TextBlock FontWeight="Bold" FontFamily="Bahnschrift" FontSize="18" Text="Select Receipt Id:" HorizontalAlignment="Left" Margin="54,39,0,205" Grid.Row="2"/>
+
+        <!-- ComboBox pentru ReceiptIds -->
+        <ComboBox ItemsSource="{Binding Receipts}"
+                  DisplayMemberPath="ReceiptId"
+                  SelectedValuePath="ReceiptId"
+                  SelectedValue="{Binding SelectedReceiptId}"
+                  x:Name="ReceiptIds" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Width="213" Margin="17,76,0,184"/>
+
+        <!-- TextBox pentru alte detalii sau informații adiționale -->
+        <TextBox BorderThickness="4" BorderBrush="Black" Text="{Binding ReceiptDetails}"
+                 IsReadOnly="True" FontFamily="Bahnschrift" FontSize="12"
+                 Grid.Row="2" Grid.ColumnSpan="2" Margin="254,10,26,10">
+            <TextBox.Template>
+                <ControlTemplate TargetType="TextBox">
+                    <Border BorderBrush="Black" BorderThickness="4" Background="{TemplateBinding Background}">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+
+        <Image Source="/Resources/shop1.png" Margin="140,0,33,0" RenderTransformOrigin="1.32,3.361" Grid.Column="1"/>
+        <Button Command="{Binding BackToCashierPageCommand}" 
+            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
+            x:Name="BackToLogin" Margin="64,187,112,33" Grid.Row="2">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="Black" CornerRadius="10">
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Return" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Image Source="/Resources/receipt.png" Margin="34,0,125,289" RenderTransformOrigin="1.32,3.361" Grid.RowSpan="3"/>
     </Grid>
 </Page>

@@ -20,7 +20,7 @@
         <Image Source="../Resources/shop1.png" Margin="2,10,431,304"></Image>
         <Button Command="{Binding BackToLoginCommand}" 
                 CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
-                x:Name="BackToLogin" Margin="463,52,39,328">
+                x:Name="BackToLogin" Margin="460,34,36,328">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="Black" CornerRadius="10">

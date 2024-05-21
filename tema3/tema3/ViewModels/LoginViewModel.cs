@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,14 @@ using System.Windows.Shapes;
 using Supermarket.ViewModels.Commands;
 using tema3.Models.BusinessLogicLayer;
 using tema3.Models.DataAccessLayer;
+using tema3.Models.Entities;
+using tema3.Services;
 
 namespace tema3.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        private ObservableCollection<User> Users { get; set; }
         private UserBLL userBLL = new UserBLL();
         private string _username;
         private string _password;
@@ -48,11 +52,17 @@ namespace tema3.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand<object>(Login);
+            Users = userBLL.GetAllUsers();
         }
 
         private void Login(object t)
         {
             var currPage = t as Page;
+            foreach (User user in Users)
+            {
+                if (user.Username == Username && user.Password == Password)
+                    SessionService.Instance.CurrentUser = user;
+            }
 
             if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password))
             {

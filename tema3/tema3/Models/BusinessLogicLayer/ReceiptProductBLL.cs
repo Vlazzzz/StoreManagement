@@ -36,7 +36,8 @@ namespace tema3.Models.BusinessLogicLayer
                         Quantity = (int)reader["Quantity"],
                         Unit = (string)reader["Unit"],
                         Subtotal = (decimal)reader["Subtotal"],
-                        IsActive = (bool)reader["IsActive"]
+                        IsActive = (bool)reader["IsActive"],
+                        ProductName = GetProductNameById((int)reader["ProductId"])
                     };
                     receiptProducts.Add(receiptProduct);
                 }
@@ -46,5 +47,25 @@ namespace tema3.Models.BusinessLogicLayer
 
             return new ObservableCollection<ReceiptProduct>(receiptProducts);
         }
+
+        public string GetProductNameById(int productId)
+        {
+            string productName = string.Empty;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand("GetProductNameById", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ProductId", productId);
+
+                    connection.Open();
+                    productName = (string)command.ExecuteScalar();
+                }
+            }
+
+            return productName;
+        }
+
     }
 }

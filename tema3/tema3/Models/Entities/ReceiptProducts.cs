@@ -18,5 +18,8 @@ namespace tema3.Models.Entities
         public bool IsActive { get; set; }
         public virtual Product Product { get; set; }
         public virtual Receipt Receipt { get; set; }
+
+        //to bind directly the name of the Product in Cashier mode receipt visualisation
+        public string ProductName { get; set; }
     }
 }

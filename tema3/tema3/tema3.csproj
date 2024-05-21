@@ -9,13 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\receipt.png" />
     <None Remove="Resources\shop1.png" />
     <None Remove="Resources\shop2.png" />
     <None Remove="Resources\supermarket.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\receipt.png" />
     <Resource Include="Resources\shop1.png" />
     <Resource Include="Resources\shop2.png" />
     <Resource Include="Resources\supermarket.png" />

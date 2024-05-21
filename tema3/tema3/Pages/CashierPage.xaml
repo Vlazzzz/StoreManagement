@@ -55,7 +55,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="Black" CornerRadius="10">
-                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="AddReceipt" />
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="NewReceipt" />
                     </Border>
                 </ControlTemplate>
             </Button.Template>
