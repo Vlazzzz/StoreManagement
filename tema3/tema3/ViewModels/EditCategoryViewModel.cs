@@ -71,6 +71,7 @@ namespace tema3.ViewModels
             categoryDAL.InsertCategory(Category);
             Categories = categoryBLL.GetAllCategories();
             OnPropertyChanged(nameof(Categories));
+            System.Windows.MessageBox.Show("Category added successfully!");
         }
 
         private void UpdateCategoryInDatabase()
@@ -91,6 +92,7 @@ namespace tema3.ViewModels
             categoryDAL.UpdateCategory(_selectedCategory.CategoryId, Category);
             Categories = categoryBLL.GetAllCategories();
             OnPropertyChanged(nameof(Categories));
+            System.Windows.MessageBox.Show("Category updated successfully!");
         }
 
         private void ReturnToMenuFunction(object obj)

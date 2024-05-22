@@ -55,7 +55,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="Black" CornerRadius="10">
-                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="NewReceipt" />
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="New Receipt" />
                     </Border>
                 </ControlTemplate>
             </Button.Template>
@@ -66,7 +66,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="Black" CornerRadius="10">
-                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="InspectReceipts" />
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Inspect Receipts" />
                     </Border>
                 </ControlTemplate>
             </Button.Template>
@@ -78,7 +78,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="Black" CornerRadius="10">
-                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="BackToLogin" />
+                        <TextBlock Foreground="White" TextAlignment="Center" VerticalAlignment="Center" FontFamily="Bahnschrift SemiBold Condensed" FontSize="18" Text="Back To Login" />
                     </Border>
                 </ControlTemplate>
             </Button.Template>

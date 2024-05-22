@@ -84,6 +84,7 @@ namespace tema3.ViewModels
             producerDAL.InsertProducer(ProducerName, OriginCountry);
             Producers = producerBLL.GetAllProducers();
             OnPropertyChanged(nameof(Producers));
+            System.Windows.MessageBox.Show("Producer added successfully!");
         }
 
         private void UpdateProducerInDatabase()
@@ -107,6 +108,7 @@ namespace tema3.ViewModels
             producerDAL.UpdateProducer(_selectedProducer.ProducerId, ProducerName, OriginCountry);
             Producers = producerBLL.GetAllProducers();
             OnPropertyChanged(nameof(Producers));
+            System.Windows.MessageBox.Show("Producer updated successfully!");
         }
 
         private void ReturnToMenuFunction(object obj)

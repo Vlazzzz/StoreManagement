@@ -158,6 +158,7 @@ namespace tema3.ViewModels
             stockDAL.InsertStock(productId, Quantity, Unit, SupplyDate, ExpiryDate, PurchasePrice);
             Stocks = stockBLL.GetAllStocks();
             OnPropertyChanged(nameof(Stocks));
+            System.Windows.MessageBox.Show("Stock added successfully!");
         }
 
         private void UpdateStockInDatabase()
@@ -172,6 +173,7 @@ namespace tema3.ViewModels
             stockDAL.UpdateStock(_selectedStock.StockId, _selectedStock.ProductId, Quantity, Unit, SupplyDate, ExpiryDate, PurchasePrice);
             Stocks = stockBLL.GetAllStocks();
             OnPropertyChanged(nameof(Stocks));
+            System.Windows.MessageBox.Show("Stock updated successfully!");
         }
 
         private void ReturnToMenuFunction(object obj)

@@ -105,6 +105,7 @@ namespace tema3.ViewModels
             userDAL.UpdateUser(_selectedUser.UserId, Username, Password, isAdmin);
             Users = userBLL.GetAllUsers();
             OnPropertyChanged(nameof(Users));
+            System.Windows.MessageBox.Show("User updated successfully!");
         }
 
         private void ReturnToMenuFunction(object obj)
@@ -139,6 +140,7 @@ namespace tema3.ViewModels
             userDAL.InsertUser(Username, Password, isAdmin);
             Users = userBLL.GetAllUsers();
             OnPropertyChanged(nameof(Users));
+            System.Windows.MessageBox.Show("User added successfully!");
         }
     }
 }

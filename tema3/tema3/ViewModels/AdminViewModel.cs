@@ -211,6 +211,7 @@ namespace tema3.ViewModels
                 userDAL.DeleteUser(SelectedUser.UserId);
                 Users = userBLL.GetAllUsers();
                 OnPropertyChanged(nameof(Users));
+                System.Windows.MessageBox.Show("User deleted successfully!");
             }
         }
 
@@ -237,6 +238,7 @@ namespace tema3.ViewModels
                 categoryDAL.DeleteCategory(SelectedCategory.CategoryId);
                 Categories = categoryBLL.GetAllCategories();
                 OnPropertyChanged(nameof(Categories));
+                System.Windows.MessageBox.Show("Category deleted successfully!");
             }
         }
         //PRODUCT OPERATIONS
@@ -262,6 +264,7 @@ namespace tema3.ViewModels
                 productDAL.DeleteProduct(SelectedProduct.ProductId);
                 Products = productBLL.GetAllProducts();
                 OnPropertyChanged(nameof(Products));
+                System.Windows.MessageBox.Show("Product deleted successfully!");
             }
         }
 
@@ -288,6 +291,7 @@ namespace tema3.ViewModels
                 producerDAL.DeleteProducer(SelectedProducer.ProducerId);
                 Producers = producerBLL.GetAllProducers();
                 OnPropertyChanged(nameof(Producers));
+                System.Windows.MessageBox.Show("Producer deleted successfully!");
             }
         }
 
@@ -314,6 +318,7 @@ namespace tema3.ViewModels
                 stockDAL.DeleteStock(SelectedStock.StockId);
                 Stocks = stockBLL.GetAllStocks();
                 OnPropertyChanged(nameof(Stocks));
+                System.Windows.MessageBox.Show("Stock deleted successfully!");
             }
         }
         //RECEIPT OPERATIONS
@@ -333,6 +338,7 @@ namespace tema3.ViewModels
                 receiptDAL.DeleteReceipt(SelectedReceipt.ReceiptId);
                 Receipts = receiptBLL.GetAllReceipts();
                 OnPropertyChanged(nameof(Receipts));
+                System.Windows.MessageBox.Show("Receipt deleted successfully!");
             }
         }
     }

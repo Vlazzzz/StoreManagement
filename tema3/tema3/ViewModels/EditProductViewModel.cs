@@ -143,6 +143,7 @@ namespace tema3.ViewModels
             // Refresh the product list
             Products = productBLL.GetAllProducts();
             OnPropertyChanged(nameof(Products));
+            System.Windows.MessageBox.Show("Product added successfully!");
         }
 
 
@@ -167,6 +168,7 @@ namespace tema3.ViewModels
 
             Products = productBLL.GetAllProducts();
             OnPropertyChanged(nameof(Products));
+            System.Windows.MessageBox.Show("Product updated successfully!");
         }
 
         private void ReturnToMenuFunction(object obj)

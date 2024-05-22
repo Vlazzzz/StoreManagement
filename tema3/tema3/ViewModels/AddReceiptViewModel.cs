@@ -1,10 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Supermarket.ViewModels.Commands;
 using tema3.Models.BusinessLogicLayer;
 using tema3.Models.DataAccessLayer;
 using tema3.Models.Entities;
+using tema3.Pages;
 using tema3.Services;
 
 namespace tema3.ViewModels
@@ -71,12 +73,14 @@ namespace tema3.ViewModels
         private ProductBLL productBLL = new ProductBLL();
 
         //ne luam un contor, pentru ca sa stim ca trebuie sa creem un nou bon atunci adaugam primul produs pe bon
-        private int _receiptCounter = 0;
+        private int _receiptProductsCounter = 0;
 
         private int cashierId;
         private string cashierName;
 
         public ICommand AddProductOnReceiptCommand { get; set; }
+        public ICommand ResetCommand { get; set; }
+        public ICommand BackToCashierPageCommand { get; set; }
 
         public AddReceiptViewModel()
         {
@@ -86,6 +90,8 @@ namespace tema3.ViewModels
             Products = productBLL.GetAllProducts();
             InitializeProductsInStock();
             AddProductOnReceiptCommand = new RelayCommand(AddProductOnReceipt);
+            ResetCommand = new RelayCommand<object>(ResetPage);
+            BackToCashierPageCommand = new RelayCommand<object>(BackToCashierPage);
             AddedProductsOnReceipt = new ObservableCollection<Product>();
             if (SessionService.Instance.CurrentUser != null)
             {
@@ -96,16 +102,42 @@ namespace tema3.ViewModels
                 // Și utilizați aceste informații după cum aveți nevoie
             }
         }
-        
+
+        private void ResetPage(object obj)
+        {
+            MessageBox.Show("Receipt added successfully.");
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new AddReceiptPage());
+        }
+
+        private void BackToCashierPage(object obj)
+        {
+            var currPage = obj as Page;
+            currPage.NavigationService.Navigate(new CashierPage());
+        }
+
         private int idCurrentReceipt = -1;
         private decimal totalValue = 0;
         private void AddProductOnReceipt()
         {
-            if (_receiptCounter == 0)
+            if (Unit == null || Unit == "")
+            {
+                MessageBox.Show("Please fill in all th fields!");
+                return;
+            }
+
+            if (Quantity <= 0)
+            {
+                MessageBox.Show("Please fill in all th fields!");
+                return;
+            }
+
+            if (_receiptProductsCounter == 0)
             {
                 //creez un nou bon
                 //Valoarea totala a bonului este 0, pentru ca nu am adaugat inca niciun produs, dar se va modifica pe parcurs
                 receiptDAL.InsertReceipt(cashierId, DateTime.Now, 0);
+                Receipts = receiptBLL.GetAllReceipts();
                 foreach (Receipt receipt in Receipts)
                 {
                     if (receipt.ReceiptId > idCurrentReceipt)
@@ -123,26 +155,67 @@ namespace tema3.ViewModels
                     if (Quantity <= product.Quantity)
                     {
                         //adaugam produsul pe bon si scadem cantitatea din stoc
-                        _receiptCounter++;
+                        _receiptProductsCounter++; //counter pentru nr de produse adaugate pe bon
                         //totodata aici trebuie sa dam update la valoarea totala a bonului cu id-ul idCurrentReceipt
                         totalValue += product.Price * Quantity;
                         //update la valoarea totala a bonului
                         receiptDAL.UpdateReceipt(idCurrentReceipt, cashierId, DateTime.Now, totalValue);
+                        Receipts = receiptBLL.GetAllReceipts();
                         //adaugam produsul pe bon
-                        receiptProductDAL.InsertReceiptProduct(idCurrentReceipt, ProductId, Quantity, Unit, product.Price * Quantity);
+                        bool productIsAlreadyOnReceipt = false;
+                        foreach (ReceiptProduct receiptProduct in ReceiptProducts)
+                        {
+                            if (receiptProduct.ReceiptId == idCurrentReceipt && receiptProduct.ProductId == ProductId)
+                            {
+                                //daca produsul exista deja pe bon, facem update la cantitate si subtotal
+                                int newQuantity = receiptProduct.Quantity + Quantity;
+                                receiptProductDAL.UpdateReceiptProduct(idCurrentReceipt, ProductId, newQuantity, Unit, product.Price * newQuantity);
+                                ReceiptProducts = receiptProductBLL.GetAllReceiptProducts();
+                                productIsAlreadyOnReceipt = true;
+                                break;
+                            }
+                        }
+
+                        if (!productIsAlreadyOnReceipt)
+                        {
+                            //daca produsul nu exista pe bon, il adaugam
+                            receiptProductDAL.InsertReceiptProduct(idCurrentReceipt, ProductId, Quantity, Unit, product.Price * Quantity);
+                            ReceiptProducts = receiptProductBLL.GetAllReceiptProducts();
+                        }
+
                         //adaugam produsul in lista de produse adaugate pe bon salvata local
                         AddedProductsOnReceipt.Add(Products.FirstOrDefault(p => p.ProductId == ProductId));
                         //scadem cantitatea din stoc
                         product.Quantity -= Quantity;
                         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         // Update the stock in the database with the new quantity(daca cantitatea introdusa este mai mare decat unul din stocuri,
-                        // il stergem pe cel mai mic si daca a mai ramas, mai stergem si din celalalt/celelelte care a/au ramas)
-                        //??
-                        //??
-                        //??        DE IMPLEMENTAT 
-                        //??
-                        //??
-                        //??
+                        bool StillIsQuantityToSubstract = true;
+                        foreach (Stock stock in Stocks)
+                        {
+                            if(StillIsQuantityToSubstract)
+                            {
+                                if (stock.ProductId == ProductId)
+                                {
+                                    if (stock.Quantity > Quantity)
+                                    {
+                                        stockDAL.UpdateStock(stock.StockId, stock.ProductId, stock.Quantity - Quantity,
+                                            stock.Unit, stock.SupplyDate, stock.ExpiryDate, stock.PurchasePrice);
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        stockDAL.DeleteStock(stock.StockId);
+                                        Quantity -= stock.Quantity;
+                                    }
+                                    Stocks = stockBLL.GetAllStocks();
+                                }
+
+                                if (Quantity == 0)
+                                {
+                                    StillIsQuantityToSubstract = false;
+                                }
+                            }
+                        }
                         break;
                     }
                     else
