@@ -14,14 +14,17 @@
     </Page.DataContext>
 
     <Grid>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Width="268" Margin="0,169,0,0" Height="227">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Width="211" Margin="0,169,0,0" Height="227">
             <TextBlock Text=" Username" FontFamily="Bahnschrift SemiBold Condensed" FontSize="30" Width="113"/>
             <TextBox FontSize="18" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Background="White" Width="170" Height="23"/>
             <TextBlock  Text=" Password" FontFamily="Bahnschrift SemiBold Condensed" FontSize="30" Margin="0,10,0,0" Width="105"/>
-            <TextBox FontSize="18" FontFamily="Bahnschrift SemiBold Condensed" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Margin="0,0, 0, 0" Background="White" Width="170" RenderTransformOrigin="0.286,0.325" Height="24"/>
+            <PasswordBox x:Name="PasswordBox" 
+                         FontSize="16"
+                         PasswordChanged="PasswordBox_PasswordChanged"
+                         Height="24" Width="171"/>
             <Button Background="Transparent" Height="92" Width="176" RenderTransformOrigin="-0.491,1.544"
-                Command="{Binding LoginCommand}"
-                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}">
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type Page}}}">
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="Black" CornerRadius="10" Margin="29,24,32,16">
