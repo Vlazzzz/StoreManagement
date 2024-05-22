@@ -190,7 +190,23 @@ namespace tema3.ViewModels
                         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         // Update the stock in the database with the new quantity(daca cantitatea introdusa este mai mare decat unul din stocuri,
                         bool StillIsQuantityToSubstract = true;
+                        //sort the Stocks ascending by the expiry date
+
+                        /////
+                        ///
+                        ///
+                        Stocks = stockBLL.GetAllStocks();
+                        List<Stock> stockList = new List<Stock>();
                         foreach (Stock stock in Stocks)
+                        {
+                            if (stock.ProductId == ProductId)
+                            {
+                                stockList.Add(stock);
+                            }
+                        }
+                        stockList.Sort((x, y) => DateTime.Compare(x.ExpiryDate, y.ExpiryDate));
+
+                        foreach (Stock stock in stockList)
                         {
                             if(StillIsQuantityToSubstract)
                             {

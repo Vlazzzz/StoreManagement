@@ -6,6 +6,7 @@ using tema3.Models.BusinessLogicLayer;
 using tema3.Models.DataAccessLayer;
 using tema3.Models.Entities;
 using tema3.Pages;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace tema3.ViewModels
 {
@@ -154,6 +155,14 @@ namespace tema3.ViewModels
             Producers = producerBLL.GetAllProducers();
             Receipts = receiptBLL.GetAllReceipts();
             Stocks = stockBLL.GetAllStocks();
+            foreach (var stock in Stocks)
+            {
+                if (stock.ExpiryDate < System.DateTime.Now)
+                {
+                    stockDAL.DeleteStock(stock.StockId);
+                    Stocks = stockBLL.GetAllStocks();
+                }
+            }
 
             AddUserCommand = new RelayCommand<object>(AddUser);
             EditUserCommand = new RelayCommand<object>(EditUser);
