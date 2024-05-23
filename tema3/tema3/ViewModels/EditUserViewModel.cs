@@ -117,7 +117,8 @@ namespace tema3.ViewModels
         private void AddUserInDatabase()
         {
             bool isAdmin;
-            if (SelectedCategory == "System.Windows.Controls.ComboBoxItem: Admin")
+            Console.WriteLine(SelectedCategory);
+            if (SelectedCategory == "Admin")
                 isAdmin = true;
             else
                 isAdmin = false;
