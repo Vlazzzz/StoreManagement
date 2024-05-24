@@ -21,10 +21,9 @@
             <li>Search and filter data, including viewing products by manufacturer and category, calculating category values, and viewing user-specific sales data.</li>
         </ul>
         <br>
+        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/edc24adc-c4f8-49ff-98f3-4ead39529ce1" alt="Admin Dashboard" style="display: block; margin: 20px auto; width: 45%;">
+        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/6bbbe745-3e28-45a1-9d5e-1d6a1a1b4952" alt="Admin Manage Users" style="display: block; margin: 20px auto; width: 45%;">
         <br>
-        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/edc24adc-c4f8-49ff-98f3-4ead39529ce1" alt="Admin Dashboard" style="display: block; margin-top: 10px; width: 45%;">
-        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/6bbbe745-3e28-45a1-9d5e-1d6a1a1b4952" alt="Admin Manage Users" style="display: block; margin-top: 10px; width: 45%;">
-        <br><br>
     </li>
     <li><strong>Cashier:</strong>
         <ul>
@@ -32,12 +31,11 @@
             <li>Issue and view receipt details, including calculating subtotals and totals correctly.</li>
             <li>Manage stock quantities and handle logical stock deactivation.</li>
         </ul>
-        <br><br>
-        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/fd973d12-9afa-47a8-8d23-d09b670a34bc" alt="Cashier Search Product" style="display: block; margin-top: 10px; width: 45%;">
-        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/a325d42d-9447-478b-aad2-59f18cb45b13" alt="Cashier Issue Receipt" style="display: block; margin-top: 10px; width: 45%;">
+        <br>
+        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/fd973d12-9afa-47a8-8d23-d09b670a34bc" alt="Cashier Search Product" style="display: block; margin: 20px auto; width: 45%;">
+        <img src="https://github.com/Vlazzzz/StoreManagement/assets/132906534/a325d42d-9447-478b-aad2-59f18cb45b13" alt="Cashier Issue Receipt" style="display: block; margin: 20px auto; width: 45%;">
     </li>
 </ul>
-    <br><br>
 <h3>2. 🗃️ Data Management</h3>
 <ul>
     <li><strong>Products:</strong> Store details like product name, barcode, category, and manufacturer.</li>
@@ -70,12 +68,8 @@
     <li><strong>Setup Database:</strong>
         <ul>
             <li>Ensure SQL Server is installed and running.</li>
+            <li>Open SSMS and run the <code>database_script.sql</code> script located in the project to create and populate the database.</li>
             <li>Update the connection string in the <code>appsettings.json</code> file with your SQL Server details.</li>
-            <li>Run the migrations to set up the database schema:
-                <pre>
-                    <code>dotnet ef database update</code>
-                </pre>
-            </li>
         </ul>
     </li>
     <li><strong>Run the Application:</strong>
@@ -88,7 +82,7 @@
 </ol>
 <h2>🚀 Usage</h2>
 <ul>
-    <li><strong>Login:</strong> Start by logging in as an administrator or cashier.</li>
+    <li><strong>Login:</strong> Start by logging in as an administrator or cashier. If you use the database_script from this repository you can use the default admin account (Username: "admin", Password: "123") so you can login and start using the application.</li>
     <li><strong>Administrator Functions:</strong> Access the admin panel to manage users, products, categories, manufacturers, stocks, and view reports.</li>
     <li><strong>Cashier Functions:</strong> Use the cashier interface to search for products, issue receipts, and manage sales.</li>
 </ul>
@@ -100,8 +94,6 @@
 </ul>
 <h2>🤝 Contributions</h2>
 <p>Contributions are welcome! Please fork the repository and create a pull request with your changes.</p>
-<h2>📄 License</h2>
-<p>This project is licensed under the MIT License. See the <code>LICENSE</code> file for details.</p>
 <p>Feel free to open issues for any bugs or feature requests. Your feedback is valuable for the improvement of this project. Thank you for using <strong>Supermarket Management</strong>!</p>
 </body>
 </html>
