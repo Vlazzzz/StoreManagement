@@ -1,0 +1,587 @@
+USE [Supermarket]
+GO
+/****** Object:  StoredProcedure [dbo].[spCategoryDelete]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Delete operation for Category
+CREATE PROCEDURE [dbo].[spCategoryDelete]
+    @CategoryId int
+AS
+BEGIN
+    UPDATE Category
+    SET IsActive = 0
+    WHERE CategoryId = @CategoryId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spCategoryInsert]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Insert operation for Category
+CREATE PROCEDURE [dbo].[spCategoryInsert]
+    @Name nvarchar(50)
+AS
+BEGIN
+    INSERT INTO Category(Name)
+    VALUES (@Name)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spCategorySelectAll]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- SelectAll operation for Category
+CREATE PROCEDURE [dbo].[spCategorySelectAll]
+AS
+BEGIN
+    SELECT * FROM Category WHERE IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spCategorySelectOne]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- SelectOne operation for Category
+CREATE PROCEDURE [dbo].[spCategorySelectOne]
+    @CategoryId int
+AS
+BEGIN
+    SELECT * FROM Category WHERE CategoryId = @CategoryId AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spCategoryUpdate]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Update operation for Category
+CREATE PROCEDURE [dbo].[spCategoryUpdate]
+    @CategoryId int,
+    @Name nvarchar(50)
+AS
+BEGIN
+    UPDATE Category
+    SET Name = @Name
+    WHERE CategoryId = @CategoryId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProducerDelete]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Delete operation for Producer
+CREATE PROCEDURE [dbo].[spProducerDelete]
+    @ProducerId int
+AS
+BEGIN
+    UPDATE Producer
+    SET IsActive = 0
+    WHERE ProducerId = @ProducerId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProducerInsert]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Insert operation for Producer
+CREATE PROCEDURE [dbo].[spProducerInsert]
+    @Name nvarchar(50),
+    @OriginCountry nvarchar(50)
+AS
+BEGIN
+    INSERT INTO Producer(Name, OriginCountry)
+    VALUES (@Name, @OriginCountry)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProducerSelectAll]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- SelectAll operation for Producer
+CREATE PROCEDURE [dbo].[spProducerSelectAll]
+AS
+BEGIN
+    SELECT * FROM Producer WHERE IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProducerSelectOne]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- SelectOne operation for Producer
+CREATE PROCEDURE [dbo].[spProducerSelectOne]
+    @ProducerId int
+AS
+BEGIN
+    SELECT * FROM Producer WHERE ProducerId = @ProducerId AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProducerUpdate]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Update operation for Producer
+CREATE PROCEDURE [dbo].[spProducerUpdate]
+    @ProducerId int,
+    @Name nvarchar(50),
+    @OriginCountry nvarchar(50)
+AS
+BEGIN
+    UPDATE Producer
+    SET Name = @Name, OriginCountry = @OriginCountry
+    WHERE ProducerId = @ProducerId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductDelete]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Delete operation for Product
+CREATE PROCEDURE [dbo].[spProductDelete]
+    @ProductId int
+AS
+BEGIN
+    UPDATE Product
+    SET IsActive = 0
+    WHERE ProductId = @ProductId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductInsert]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Insert operation for Product
+CREATE PROCEDURE [dbo].[spProductInsert]
+    @Name nvarchar(50),
+    @Barcode nvarchar(50),
+    @CategoryId int,
+    @ProducerId int
+AS
+BEGIN
+    INSERT INTO Product(Name, Barcode, CategoryId, ProducerId)
+    VALUES (@Name, @Barcode, @CategoryId, @ProducerId)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductReceiptDelete]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Delete operation for ProductReceipt
+CREATE PROCEDURE [dbo].[spProductReceiptDelete]
+    @ReceiptId int,
+    @ProductId int
+AS
+BEGIN
+    UPDATE ProductReceipt
+    SET IsActive = 0
+    WHERE ReceiptId = @ReceiptId AND ProductId = @ProductId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductReceiptInsert]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Insert operation for ProductReceipt
+CREATE PROCEDURE [dbo].[spProductReceiptInsert]
+    @ReceiptId int,
+    @ProductId int,
+    @Quantity int,
+    @Unit int,
+    @SubTotal decimal(18, 2)
+AS
+BEGIN
+    INSERT INTO ProductReceipt(ReceiptId, ProductId, Quantity, Unit, SubTotal)
+    VALUES (@ReceiptId, @ProductId, @Quantity, @Unit, @SubTotal)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductReceiptSelectAll]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- SelectAll operation for ProductReceipt
+CREATE PROCEDURE [dbo].[spProductReceiptSelectAll]
+AS
+BEGIN
+    SELECT * FROM ProductReceipt WHERE IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductReceiptSelectOne]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- SelectOne operation for ProductReceipt
+CREATE PROCEDURE [dbo].[spProductReceiptSelectOne]
+    @ReceiptId int,
+    @ProductId int
+AS
+BEGIN
+    SELECT * FROM ProductReceipt WHERE ReceiptId = @ReceiptId AND ProductId = @ProductId AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductReceiptUpdate]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Update operation for ProductReceipt
+CREATE PROCEDURE [dbo].[spProductReceiptUpdate]
+    @ReceiptId int,
+    @ProductId int,
+    @Quantity int,
+    @Unit int,
+    @SubTotal decimal(18, 2)
+AS
+BEGIN
+    UPDATE ProductReceipt
+    SET Quantity = @Quantity, Unit = @Unit, SubTotal = @SubTotal
+    WHERE ReceiptId = @ReceiptId AND ProductId = @ProductId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductSelectAll]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- SelectAll operation for Product
+CREATE PROCEDURE [dbo].[spProductSelectAll]
+AS
+BEGIN
+    SELECT * FROM Product WHERE IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductSelectOne]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- SelectOne operation for Product
+CREATE PROCEDURE [dbo].[spProductSelectOne]
+    @ProductId int
+AS
+BEGIN
+    SELECT * FROM Product WHERE ProductId = @ProductId AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spProductUpdate]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Update operation for Product
+CREATE PROCEDURE [dbo].[spProductUpdate]
+    @ProductId int,
+    @Name nvarchar(50),
+    @Barcode nvarchar(50),
+    @CategoryId int,
+    @ProducerId int
+AS
+BEGIN
+    UPDATE Product
+    SET Name = @Name, Barcode = @Barcode, CategoryId = @CategoryId, ProducerId = @ProducerId
+    WHERE ProductId = @ProductId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spReceiptDelete]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Delete operation for Receipt
+CREATE PROCEDURE [dbo].[spReceiptDelete]
+    @ReceiptId int
+AS
+BEGIN
+    UPDATE Receipt
+    SET IsActive = 0
+    WHERE ReceiptId = @ReceiptId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spReceiptInsert]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Insert operation for Receipt
+CREATE PROCEDURE [dbo].[spReceiptInsert]
+    @UserId int,
+    @IssueDate datetime,
+    @AmountReceived decimal(18, 2)
+AS
+BEGIN
+    INSERT INTO Receipt(UserId, IssueDate, AmountReceived)
+    VALUES (@UserId, @IssueDate, @AmountReceived)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spReceiptSelectAll]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- SelectAll operation for Receipt
+CREATE PROCEDURE [dbo].[spReceiptSelectAll]
+AS
+BEGIN
+    SELECT * FROM Receipt WHERE IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spReceiptSelectOne]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- SelectOne operation for Receipt
+CREATE PROCEDURE [dbo].[spReceiptSelectOne]
+    @ReceiptId int
+AS
+BEGIN
+    SELECT * FROM Receipt WHERE ReceiptId = @ReceiptId AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spReceiptUpdate]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Update operation for Receipt
+CREATE PROCEDURE [dbo].[spReceiptUpdate]
+    @ReceiptId int,
+    @UserId int,
+    @IssueDate datetime,
+    @AmountReceived decimal(18, 2)
+AS
+BEGIN
+    UPDATE Receipt
+    SET UserId = @UserId, IssueDate = @IssueDate, AmountReceived = @AmountReceived
+    WHERE ReceiptId = @ReceiptId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spStockDelete]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Delete operation for Stock
+CREATE PROCEDURE [dbo].[spStockDelete]
+    @StockId int
+AS
+BEGIN
+    UPDATE Stock
+    SET IsActive = 0
+    WHERE StockId = @StockId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spStockInsert]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Insert operation for Stock
+CREATE PROCEDURE [dbo].[spStockInsert]
+    @ProductId int,
+    @Quantity int,
+    @Unit int,
+    @SupplyDate datetime,
+    @ExpiryDate datetime,
+    @PurchasePrice decimal(18, 2)
+AS
+BEGIN
+    INSERT INTO Stock(ProductId, Quantity, Unit, SupplyDate, ExpiryDate, PurchasePrice)
+    VALUES (@ProductId, @Quantity, @Unit, @SupplyDate, @ExpiryDate, @PurchasePrice)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spStockSelectAll]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- SelectAll operation for Stock
+CREATE PROCEDURE [dbo].[spStockSelectAll]
+AS
+BEGIN
+    SELECT * FROM Stock WHERE IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spStockSelectOne]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- SelectOne operation for Stock
+CREATE PROCEDURE [dbo].[spStockSelectOne]
+    @StockId int
+AS
+BEGIN
+    SELECT * FROM Stock WHERE StockId = @StockId AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spStockUpdate]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Update operation for Stock
+CREATE PROCEDURE [dbo].[spStockUpdate]
+    @StockId int,
+    @ProductId int,
+    @Quantity int,
+    @Unit int,
+    @SupplyDate datetime,
+    @ExpiryDate datetime,
+    @PurchasePrice decimal(18, 2)
+AS
+BEGIN
+    UPDATE Stock
+    SET ProductId = @ProductId, Quantity = @Quantity, Unit = @Unit, SupplyDate = @SupplyDate, ExpiryDate = @ExpiryDate, PurchasePrice = @PurchasePrice
+    WHERE StockId = @StockId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUserDelete]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Delete operation for User
+CREATE PROCEDURE [dbo].[spUserDelete]
+    @UserId int
+AS
+BEGIN
+    UPDATE [User]
+    SET IsActive = 0
+    WHERE UserId = @UserId
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUserInsert]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Insert operation for User
+CREATE PROCEDURE [dbo].[spUserInsert]
+    @Username nvarchar(50),
+    @Password nvarchar(50),
+    @UserType int
+AS
+BEGIN
+    INSERT INTO [User](Username, Password, UserType)
+    VALUES (@Username, @Password, @UserType)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUserSelectAll]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- SelectAll operation for User
+CREATE PROCEDURE [dbo].[spUserSelectAll]
+AS
+BEGIN
+    SELECT * FROM [User] WHERE IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUserSelectAllAdmins]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spUserSelectAllAdmins]
+AS
+BEGIN
+    SELECT * FROM [User] WHERE UserType = 0 AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUserSelectAllCashiers]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[spUserSelectAllCashiers]
+AS
+BEGIN
+    SELECT * FROM [User] WHERE UserType = 1 AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUserSelectOne]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- SelectOne operation for User
+CREATE PROCEDURE [dbo].[spUserSelectOne]
+    @UserId int
+AS
+BEGIN
+    SELECT * FROM [User] WHERE UserId = @UserId AND IsActive = 1
+END
+GO
+/****** Object:  StoredProcedure [dbo].[spUserUpdate]    Script Date: 15.05.2024 19:35:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- Update operation for User
+CREATE PROCEDURE [dbo].[spUserUpdate]
+    @UserId int,
+    @Username nvarchar(50),
+    @Password nvarchar(50),
+    @UserType int
+AS
+BEGIN
+    UPDATE [User]
+    SET Username = @Username, Password = @Password, UserType = @UserType
+    WHERE UserId = @UserId
+END
+GO
